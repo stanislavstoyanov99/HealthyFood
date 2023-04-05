@@ -396,3 +396,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/Data/HealthyFood.Data/appsettings.json
+/Web/HealthyFood.Web/appsettings.json

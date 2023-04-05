@@ -5,6 +5,7 @@
     using System.IO;
     using System.Threading.Tasks;
 
+    using CommandLine;
     using HealthyFood.Data;
     using HealthyFood.Data.Common;
     using HealthyFood.Data.Common.Repositories;
@@ -13,9 +14,6 @@
     using HealthyFood.Data.Seeding;
     using HealthyFood.Services.Data;
     using HealthyFood.Services.Messaging;
-
-    using CommandLine;
-
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;

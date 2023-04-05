@@ -18,6 +18,10 @@
 	</ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="7.0.3" />
     <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
@@ -33,11 +37,9 @@
     <ProjectReference Include="..\..\HealthyFood.Common\HealthyFood.Common.csproj" />
     <ProjectReference Include="..\..\Data\HealthyFood.Data.Models\HealthyFood.Data.Models.csproj" />
     <ProjectReference Include="..\..\Data\HealthyFood.Data\HealthyFood.Data.csproj" />
+    <ProjectReference Include="..\..\Models\HealthyFood.Models.ViewModels\HealthyFood.Models.ViewModels.csproj" />
     <ProjectReference Include="..\..\Services\HealthyFood.Services.Data\HealthyFood.Services.Data.csproj" />
     <ProjectReference Include="..\..\Services\HealthyFood.Services.Mapping\HealthyFood.Services.Mapping.csproj" />
     <ProjectReference Include="..\..\Services\HealthyFood.Services.Messaging\HealthyFood.Services.Messaging.csproj" />
-    <ProjectReference Include="..\..\Services\HealthyFood.Services\HealthyFood.Services.csproj" />
-    <ProjectReference Include="..\HealthyFood.Web.Infrastructure\HealthyFood.Web.Infrastructure.csproj" />
-    <ProjectReference Include="..\HealthyFood.Web.ViewModels\HealthyFood.Web.ViewModels.csproj" />
   </ItemGroup>
 </Project>

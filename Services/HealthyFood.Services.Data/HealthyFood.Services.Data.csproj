@@ -24,4 +24,8 @@
     <ProjectReference Include="..\HealthyFood.Services.Mapping\HealthyFood.Services.Mapping.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
+
 </Project>

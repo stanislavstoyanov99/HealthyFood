@@ -2,7 +2,7 @@
 {
     using System.Diagnostics;
 
-    using HealthyFood.Web.ViewModels;
+    using HealthyFood.Models.ViewModels;
 
     using Microsoft.AspNetCore.Mvc;
 

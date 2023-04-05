@@ -3,15 +3,13 @@
     using System.Reflection;
 
     using HealthyFood.Data;
-    using HealthyFood.Data.Common;
     using HealthyFood.Data.Common.Repositories;
     using HealthyFood.Data.Models;
     using HealthyFood.Data.Repositories;
     using HealthyFood.Data.Seeding;
-    using HealthyFood.Services.Data;
+    using HealthyFood.Models.ViewModels;
     using HealthyFood.Services.Mapping;
     using HealthyFood.Services.Messaging;
-    using HealthyFood.Web.ViewModels;
 
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
@@ -60,11 +58,9 @@
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
-            services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
-            services.AddTransient<ISettingsService, SettingsService>();
         }
 
         private static void Configure(WebApplication app)
