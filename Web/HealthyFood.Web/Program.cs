@@ -8,6 +8,8 @@
     using HealthyFood.Data.Repositories;
     using HealthyFood.Data.Seeding;
     using HealthyFood.Models.ViewModels;
+    using HealthyFood.Services.Data.Interfaces;
+    using HealthyFood.Services.Data;
     using HealthyFood.Services.Mapping;
     using HealthyFood.Services.Messaging;
 
@@ -61,6 +63,7 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
+            services.AddTransient<IRecipesService, RecipesService>();
         }
 
         private static void Configure(WebApplication app)

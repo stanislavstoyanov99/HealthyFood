@@ -21,11 +21,10 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\HealthyFood.Data.Common\HealthyFood.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\HealthyFood.Data.Models\HealthyFood.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Models\HealthyFood.Models.InputModels\HealthyFood.Models.InputModels.csproj" />
+    <ProjectReference Include="..\..\Models\HealthyFood.Models.ViewModels\HealthyFood.Models.ViewModels.csproj" />
     <ProjectReference Include="..\HealthyFood.Services.Mapping\HealthyFood.Services.Mapping.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
+    <ProjectReference Include="..\HealthyFood.Services.Messaging\HealthyFood.Services.Messaging.csproj" />
   </ItemGroup>
 
 </Project>
