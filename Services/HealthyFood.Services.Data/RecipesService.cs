@@ -10,6 +10,7 @@
     using HealthyFood.Models.InputModels.AdministratorInputModels.Recipes;
     using HealthyFood.Models.ViewModels.Recipes;
     using HealthyFood.Services.Data.Common;
+    using HealthyFood.Services.Data.Contracts;
     using HealthyFood.Services.Data.Interfaces;
     using HealthyFood.Services.Mapping;
     using Microsoft.EntityFrameworkCore;
@@ -17,10 +18,17 @@
     public class RecipesService : IRecipesService
     {
         private readonly IDeletableEntityRepository<Recipe> recipesRepository;
+        private readonly IDeletableEntityRepository<Category> categoriesRepository;
+        private readonly ICloudinaryService cloudinaryService;
 
-        public RecipesService(IDeletableEntityRepository<Recipe> recipesRepository)
+        public RecipesService(
+            IDeletableEntityRepository<Recipe> recipesRepository,
+            IDeletableEntityRepository<Category> categoriesRepository,
+            ICloudinaryService cloudinaryService)
         {
             this.recipesRepository = recipesRepository;
+            this.categoriesRepository = categoriesRepository;
+            this.cloudinaryService = cloudinaryService;
         }
 
         public async Task<RecipeDetailsViewModel> CreateAsync(RecipeCreateInputModel recipeCreateInputModel, string userId)
@@ -31,20 +39,20 @@
                     string.Format(ExceptionMessages.DifficultyInvalidType, recipeCreateInputModel.Difficulty));
             }
 
-            //var category = await this.categoriesRepository
-            //    .All()
-            //    .FirstOrDefaultAsync(c => c.Id == recipeCreateInputModel.CategoryId);
-            //if (category == null)
-            //{
-            //    throw new NullReferenceException(
-            //        string.Format(ExceptionMessages.CategoryNotFound, recipeCreateInputModel.CategoryId));
-            //}
+            var category = await this.categoriesRepository
+                .All()
+                .FirstOrDefaultAsync(c => c.Id == recipeCreateInputModel.CategoryId);
+            if (category == null)
+            {
+                throw new NullReferenceException(
+                    string.Format(ExceptionMessages.CategoryNotFound, recipeCreateInputModel.CategoryId));
+            }
 
             var recipe = new Recipe
             {
                 Name = recipeCreateInputModel.Name,
                 Description = recipeCreateInputModel.Description,
-                //Category = category,
+                Category = category,
                 UserId = userId,
                 Ingredients = recipeCreateInputModel.Ingredients,
                 PreparationTime = recipeCreateInputModel.PreparationTime,
@@ -62,9 +70,9 @@
                     string.Format(ExceptionMessages.RecipeAlreadyExists, recipe.Name));
             }
 
-            //var imageUrl = await this.cloudinaryService
-                //.UploadAsync(recipeCreateInputModel.Image, recipeCreateInputModel.Name + Suffixes.ArticleSuffix);
-            //recipe.ImagePath = imageUrl;
+            var imageUrl = await this.cloudinaryService
+                .UploadAsync(recipeCreateInputModel.Image, recipeCreateInputModel.Name + Suffixes.ArticleSuffix);
+            recipe.ImagePath = imageUrl;
 
             await this.recipesRepository.AddAsync(recipe);
             await this.recipesRepository.SaveChangesAsync();
@@ -109,9 +117,9 @@
 
             if (recipeEditViewModel.Image != null)
             {
-                //var newImageUrl = await this.cloudinaryService
-                //    .UploadAsync(recipeEditViewModel.Image, recipeEditViewModel.Name + Suffixes.RecipeSuffix);
-                //recipe.ImagePath = newImageUrl;
+                var newImageUrl = await this.cloudinaryService
+                    .UploadAsync(recipeEditViewModel.Image, recipeEditViewModel.Name + Suffixes.RecipeSuffix);
+                recipe.ImagePath = newImageUrl;
             }
 
             recipe.Name = recipeEditViewModel.Name;

@@ -1,0 +1,86 @@
+﻿@using HealthyFood.Models.ViewModels.Recipes;
+@using HealthyFood.Web.Areas.Administration.Views.Recipes;
+@model PaginatedList<RecipeDetailsViewModel>
+@{
+    this.ViewData["Title"] = "All recipes";
+    this.ViewData["ActivePage"] = RecipesNavPages.Recipes;
+}
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var prevPage = !Model.HasPreviousPage ? "1" : (Model.PageIndex - 1).ToString();
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    var nextPage = !Model.HasNextPage ? "1" : (Model.PageIndex + 1).ToString();
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <h4>Recipes List</h4>
+            <hr />
+            <h5>Total Count : <span>@Model.Count()</span></h5>
+            @if (Model.Count() != 0)
+            {
+                <table class="table table-bordered table-dark table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Functions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var recipe in Model)
+                        {
+                            <tr>
+                                <th scope="row">@recipe.Id</th>
+                                <td>@recipe.Name</td>
+                                <td>@Html.Raw(recipe.SanitizedShortDescription)</td>
+                                <td>@recipe.Category.Name</td>
+                                <td>
+                                    <a class="badge badge-success" asp-action="Edit" asp-route-id="@recipe.Id">Edit</a>
+                                    <a class="badge badge-danger" asp-action="Remove" asp-route-id="@recipe.Id">Remove</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <hr />
+                @if (Model.TotalPages != 0)
+                {
+                    <ul class="pagination justify-content-center pb-2">
+                        <li class="page-item @prevDisabled">
+                            <a class="page-link inactive" asp-action="GetAll" asp-route-pageNumber="@prevPage">
+                                Previous
+                            </a>
+                        </li>
+                        @for (int i = 1; i <= Model.TotalPages; i++)
+                        {
+                            var active = i == Model.PageIndex ? "active CH-color" : "inactive";
+                            <li class="page-item @active">
+                                <a class="page-link @active"
+                                   asp-action="GetAll"
+                                   asp-route-pageNumber="@i">
+                                    @i
+                                </a>
+                            </li>
+                        }
+                        <li class="page-item @nextDisabled">
+                            <a class="page-link inactive" asp-action="GetAll" asp-route-pageNumber="@nextPage">
+                                Next
+                            </a>
+                        </li>
+                    </ul>
+                }
+            }
+            else
+            {
+                <div class="alert alert-danger" role="alert">
+                    There is not any data available.
+                </div>
+            }
+        </div>
+    </div>
+</div>

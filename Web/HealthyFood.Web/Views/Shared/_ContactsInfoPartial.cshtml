@@ -1,0 +1,29 @@
+﻿@using HealthyFood.Common
+<div class="contact-imfo-box mt-3">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-10 col-md-4 justify-content-center">
+                
+                <i class="fas fa-phone-volume"></i>
+                <div class="overflow-hidden">
+                    <h4>Phone</h4>
+                    <p class="lead">
+                        +01 123-456-4590
+                    </p>
+                </div>
+            </div>
+            <div class="col-10 col-md-4 justify-content-center">
+                <i class="fa fa-envelope"></i>
+                <div class="overflow-hidden">
+                    <h4>Email</h4>
+                    <p class="lead">
+                        @GlobalConstants.AdministratorEmail
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <a class="ml-4 btn btn-light border-dark br-12"  asp-area="" asp-controller="Contacts" asp-action="Index">Contact Form</a>
+            </div>
+        </div>
+    </div>
+</div>

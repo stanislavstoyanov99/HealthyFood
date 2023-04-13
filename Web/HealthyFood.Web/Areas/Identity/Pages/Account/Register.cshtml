@@ -1,0 +1,70 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 mt-80 ch-border bg-dark">
+        <h1 class="text-light">@ViewData["Title"]</h1>
+        <form id="register" asp-route-returnUrl="@Model.ReturnUrl" method="post"></form>
+        <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post"></form>
+        <h4 class="text-light">Create a new account.</h4>
+        <hr style="background-color: white;" />
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group">
+            <label class="text-light" asp-for="Input.Email"></label>
+            <input asp-for="Input.Email" class="form-control" form="register" />
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="text-light" asp-for="Input.Username"></label>
+            <input asp-for="Input.Username" class="form-control" form="register" />
+            <span asp-validation-for="Input.Username" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="text-light" asp-for="Input.FullName"></label>
+            <input asp-for="Input.FullName" class="form-control" form="register" />
+            <span asp-validation-for="Input.FullName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="text-light" asp-for="Input.Password"></label>
+            <input asp-for="Input.Password" class="form-control" form="register" />
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="text-light" asp-for="Input.ConfirmPassword"></label>
+            <input asp-for="Input.ConfirmPassword" class="form-control" form="register" />
+            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+        </div>
+        <div class=" text-light form-group form-check-inline">
+            @foreach (var gender in Model.Input.Genders)
+            {
+                <input type="radio" asp-for="Input.SelectedGender" value="@gender" class="form-check-input pl-2" form="register" /> @gender
+            }
+        </div>
+        <span asp-validation-for="Input.SelectedGender" class="text-danger"></span>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" form="register">Register</button>
+        </div>
+        <div class="form-group">
+            <section>
+                @{
+                    if ((Model.ExternalLogins?.Count ?? 0) != 0)
+                    {
+
+                        @foreach (var provider in Model.ExternalLogins)
+                        {
+                            <button type="submit" class="btn btn-fb" form="external-account" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account"><i class="fab fa-facebook"></i> Register with @provider.DisplayName</button>
+                        }
+                    }
+                }
+            </section>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

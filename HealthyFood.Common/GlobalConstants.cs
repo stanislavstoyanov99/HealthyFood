@@ -8,6 +8,8 @@
 
         public const string AdministratorUsername = "Admin";
 
+        public const string AdministratorFullName = "Stanislav";
+
         public const string AdministratorEmail = "stanislav.stoyanov369@gmail.com";
 
         public const string AdministratorPassword = "123456";

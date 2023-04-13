@@ -1,0 +1,22 @@
+﻿@using HealthyFood.Web.Areas.Administration.Views.Recipes;
+@using HealthyFood.Web.Areas.Administration.Views.Shared;
+<h5>Model's administration</h5>
+<div class="admin-nav-item">
+	<a asp-area="Administration" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
+</div>
+<ul class="nav nav-pills flex-column">
+
+	<li class="@AdminNavPages.RecipesNavClass(ViewContext)">
+		<button class="admin-nav">Recipes</button>
+		<div class="nav-panel">
+			<div class="@RecipesNavPages.CreateRecipeNavClass(ViewContext)">
+				<a asp-controller="Recipes" asp-action="Create">Create recipe</a>
+			</div>
+			<div class="@RecipesNavPages.GetAllNavClass(ViewContext)">
+				<a asp-controller="Recipes" asp-action="GetAll">List recipes</a>
+			</div>
+		</div>
+	</li>
+</ul>
+<hr />
+<h5>App's administration</h5>

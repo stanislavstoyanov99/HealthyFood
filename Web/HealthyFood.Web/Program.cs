@@ -1,20 +1,24 @@
-﻿namespace HealthyFood.Web
+namespace HealthyFood.Web
 {
+    using System;
     using System.Reflection;
 
+    using CloudinaryDotNet;
     using HealthyFood.Data;
     using HealthyFood.Data.Common.Repositories;
     using HealthyFood.Data.Models;
     using HealthyFood.Data.Repositories;
     using HealthyFood.Data.Seeding;
     using HealthyFood.Models.ViewModels;
-    using HealthyFood.Services.Data.Interfaces;
     using HealthyFood.Services.Data;
+    using HealthyFood.Services.Data.Contracts;
+    using HealthyFood.Services.Data.Interfaces;
     using HealthyFood.Services.Mapping;
     using HealthyFood.Services.Messaging;
-
+    using HealthyFood.Web.Middlewares;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
@@ -64,6 +68,16 @@
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<IRecipesService, RecipesService>();
+            services.AddTransient<ICloudinaryService, CloudinaryService>();
+
+            var account = new Account(
+               configuration["Cloudinary:AppName"],
+               configuration["Cloudinary:AppKey"],
+               configuration["Cloudinary:AppSecret"]);
+
+            Cloudinary cloudinary = new Cloudinary(account);
+
+            services.AddSingleton(cloudinary);
         }
 
         private static void Configure(WebApplication app)
@@ -97,6 +111,7 @@
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseAdminMiddleware();
 
             app.MapControllerRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
             app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
