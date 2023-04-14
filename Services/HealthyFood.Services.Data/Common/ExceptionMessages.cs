@@ -8,6 +8,12 @@
 
         public const string RecipeNameNotFound = "Recipe with name {0} is not found.";
 
+        public const string ArticleAlreadyExists = "Article with title {0} already exists.";
+
+        public const string ArticleNotFound = "Article with id {0} is not found.";
+
+        public const string CategoryAlreadyExists = "Category with name {0} already exists.";
+
         public const string CategoryNotFound = "Category with id {0} is not found.";
 
         public const string DifficultyInvalidType = "Difficulty type {0} is invalid";

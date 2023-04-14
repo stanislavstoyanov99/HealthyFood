@@ -7,7 +7,7 @@
     using CloudinaryDotNet;
     using CloudinaryDotNet.Actions;
 
-    using HealthyFood.Services.Data.Contracts;
+    using HealthyFood.Services.Data.Interfaces;
 
     using Microsoft.AspNetCore.Http;
 

@@ -1,4 +1,4 @@
-﻿namespace HealthyFood.Services.Data.Contracts
+﻿namespace HealthyFood.Services.Data.Interfaces
 {
     using System.Threading.Tasks;
 

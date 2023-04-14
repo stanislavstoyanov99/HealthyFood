@@ -11,7 +11,6 @@ namespace HealthyFood.Web
     using HealthyFood.Data.Seeding;
     using HealthyFood.Models.ViewModels;
     using HealthyFood.Services.Data;
-    using HealthyFood.Services.Data.Contracts;
     using HealthyFood.Services.Data.Interfaces;
     using HealthyFood.Services.Mapping;
     using HealthyFood.Services.Messaging;
