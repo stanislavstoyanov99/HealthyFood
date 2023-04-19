@@ -1,4 +1,6 @@
-﻿@using HealthyFood.Web.Areas.Administration.Views.Recipes;
+﻿@using HealthyFood.Web.Areas.Administration.Views.Categories;
+@using HealthyFood.Web.Areas.Administration.Views.Faq;
+@using HealthyFood.Web.Areas.Administration.Views.Recipes;
 <h5>Model's administration</h5>
 <div class="admin-nav-item">
 	<a asp-area="Administration" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
@@ -28,6 +30,27 @@
 			</div>
 		</div>
 	</li>
+
+	<li class="@AdminNavPages.CategoriesNavClass(ViewContext)">
+		<button class="admin-nav">Categories</button>
+		<div class="nav-panel">
+			<div class="@CategoryNavPages.CreateCategoryNavClass(ViewContext)">
+				<a asp-controller="Categories" asp-action="Create">Create category</a>
+			</div>
+			<div class="@CategoryNavPages.GetAllNavClass(ViewContext)">
+				<a asp-controller="Categories" asp-action="GetAll">List categories</a>
+			</div>
+		</div>
+	</li>
 </ul>
 <hr />
 <h5>App's administration</h5>
+<ul class="nav nav-pills nav-stacked flex-column">
+	<li class="@AdminNavPages.AboutNavClass(ViewContext)">
+		<button class="admin-nav">FAQ page</button>
+		<div class="nav-panel">
+			<div class="@FaqNavPages.CreateFaqNavClass(ViewContext)"><a asp-controller="Faq" asp-action="Create">Create faq</a></div>
+			<div class="@FaqNavPages.GetAllNavClass(ViewContext)"><a asp-controller="Faq" asp-action="GetAll">List faqs</a></div>
+		</div>
+	</li>
+</ul>

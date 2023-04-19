@@ -17,5 +17,9 @@
         public const string CategoryNotFound = "Category with id {0} is not found.";
 
         public const string DifficultyInvalidType = "Difficulty type {0} is invalid";
+
+        public const string FaqAlreadyExists = "Faq with question {0} and answer {1} already exists";
+
+        public const string FaqNotFound = "Faq with id {0} is not found.";
     }
 }
