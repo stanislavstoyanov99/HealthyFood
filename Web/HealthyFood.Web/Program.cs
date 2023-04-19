@@ -1,9 +1,9 @@
 namespace HealthyFood.Web
 {
-    using System;
     using System.Reflection;
 
     using CloudinaryDotNet;
+    using HealthyFood.Common.Attributes;
     using HealthyFood.Data;
     using HealthyFood.Data.Common.Repositories;
     using HealthyFood.Data.Models;
@@ -17,7 +17,6 @@ namespace HealthyFood.Web
     using HealthyFood.Web.Middlewares;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
@@ -64,10 +63,14 @@ namespace HealthyFood.Web
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
 
+            services.AddScoped<PasswordExpirationCheckAttribute>();
+
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<IRecipesService, RecipesService>();
             services.AddTransient<ICloudinaryService, CloudinaryService>();
+            services.AddTransient<ICategoriesService, CategoriesService>();
+            services.AddTransient<IArticlesService, ArticlesService>();
 
             var account = new Account(
                configuration["Cloudinary:AppName"],

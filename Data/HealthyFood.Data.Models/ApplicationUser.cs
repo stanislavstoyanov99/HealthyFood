@@ -34,6 +34,8 @@ namespace HealthyFood.Data.Models
         [Required]
         public Gender Gender { get; set; }
 
+        public DateTime? ChangedPasswordOn { get; set; }
+
         // Audit info
         public DateTime CreatedOn { get; set; }
 

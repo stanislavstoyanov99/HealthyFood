@@ -1,0 +1,64 @@
+﻿@{
+    this.ViewData["Title"] = "Dashboard";
+
+    var recipesCount = Model.RecipesCount;
+    var articleCount = Model.ArticlesCount;
+
+}
+
+<div class="container pl-3 centered">
+    <div class="row">
+        <div class="col-md-3 centered ">
+            <h1 style="text-align:center;">Healthy Food Dashboard</h1>
+        </div>
+    </div>
+    <div class="row statistic-card bg-white shadow p-3  rounded">
+        <div class="col-12 col-lg-8 pr-3 bg-white" style="min-height:120px; min-width:300px;" name="SystemUsers">
+            <canvas id="lineChart"></canvas>
+        </div>
+        <div class="col bg-white">
+            <h3 class="centered mt-5">Healthy Food System Users</h3>
+            <ul id="UsersNow" class="centered">
+                <li>Daily Users</li>
+                <li>*Functionality not implemented</li>
+                <li>Registered Users:</li>
+                <li><b>@Model.RegisteredUsers</b></li>
+                <li>Admins</li>
+                <li><b>@Model.Admins</b></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-7 statistic-card shadow p-3  mb-5 mt-3 bg-dark text-light rounded ">
+            <!-- To be done-->
+            <h3 class="text-light">Healthy Food Top 5</h3>
+            <div class="row d-flex">
+                <div class="col-12 col-lg-3 p-0 h-100 flex-grow-1 ">
+                    <div class="" id="topCategories">
+                    </div>
+                </div>
+                <div class="col-12 col-lg-5 p-0 h-100 flex-grow-1 br-l-r-white">
+                    <div class=""  id="topRecipes">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-5 statistic-card shadow p-3 mb-5 mt-3 bg-white rounded" style="padding-right:10px;">
+            <h3 class="centered">Healthy Food Main Content</h3>
+            <div class="container">
+                <p style="text-align:center">Recipes Count:
+                    <strong class="recipe-sec">@recipesCount</strong> | Articles Count: 
+                    <strong class="article-sec">@articleCount</strong>
+                </p>
+            </div>
+            <div class="conteiner chart-card" name="RecipesStatistic">
+                <canvas class="centered" id="RecipesnArticlesChar"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/dashboard.js" asp-append-version="true"></script>
+}

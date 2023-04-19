@@ -16,6 +16,18 @@
 			</div>
 		</div>
 	</li>
+
+	<li class="@AdminNavPages.ArticlesNavClass(ViewContext)">
+		<button class="admin-nav">Articles</button>
+		<div class="nav-panel">
+			<div class="@ArticleNavPages.CreateArticleNavClass(ViewContext)">
+				<a asp-controller="Articles" asp-action="Create">Create article</a>
+			</div>
+			<div class="@ArticleNavPages.GetAllNavClass(ViewContext)">
+				<a asp-controller="Articles" asp-action="GetAll">List articles</a>
+			</div>
+		</div>
+	</li>
 </ul>
 <hr />
 <h5>App's administration</h5>

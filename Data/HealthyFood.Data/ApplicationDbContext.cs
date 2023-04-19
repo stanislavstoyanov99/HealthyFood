@@ -24,6 +24,8 @@
         {
         }
 
+        public DbSet<Article> Articles { get; set; }
+
         public DbSet<Privacy> Privacies { get; set; }
 
         public DbSet<FaqEntry> FaqEntries { get; set; }
