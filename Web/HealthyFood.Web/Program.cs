@@ -75,6 +75,14 @@ namespace HealthyFood.Web
             services.AddTransient<IApplicationUsersService, ApplicationUsersService>();
             services.AddTransient<IPrivacyService, PrivacyService>();
 
+            // External login providers
+            services.AddAuthentication()
+                .AddFacebook(facebookOptions =>
+                {
+                    facebookOptions.AppId = configuration["Authentication:Facebook:AppId"];
+                    facebookOptions.AppSecret = configuration["Authentication:Facebook:AppSecret"];
+                });
+
             var account = new Account(
                configuration["Cloudinary:AppName"],
                configuration["Cloudinary:AppKey"],
