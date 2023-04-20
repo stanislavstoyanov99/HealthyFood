@@ -1,0 +1,17 @@
+﻿@using HealthyFood.Web.Areas.Administration.Views.ApplicationUsers;
+@{
+    this.ViewData["ActivePage"] = ApplicationUserNavPages.ApplicationUsers;
+    this.ViewData["Title"] = "Application Users";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-pills nav-stacked">
+                <li class="@ApplicationUserNavPages.GetAllNavClass(ViewContext)">
+                    <a asp-controller="ApplicationUsers" asp-action="GetAll">List Application Users</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

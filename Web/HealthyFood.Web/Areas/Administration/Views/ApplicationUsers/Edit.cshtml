@@ -1,0 +1,45 @@
+﻿@using HealthyFood.Models.ViewModels.ApplicationUsers
+@using HealthyFood.Web.Areas.Administration.Views.ApplicationUsers;
+@model ApplicationUserEditViewModel
+@{
+    this.ViewData["Title"] = "Edit Application User";
+    this.ViewData["ActivePage"] = ApplicationUserNavPages.ApplicationUsers;
+}
+
+<div class="row">
+    <div class="col-md-9">
+        <form asp-area="Administration" asp-controller="ApplicationUsers" asp-action="Edit" method="post">
+            <h5>Edit <b></b> Application User </h5>
+            <hr />
+            <div class="form-group">
+                <div class="form-group">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                </div>
+
+                @foreach (var role in Model.RolesList)
+                {
+                    <input type="hidden" asp-for="@Model.RoleId" />
+                    <input type="hidden" asp-for="@Model.RoleName" />
+                    <div class="form-group">
+                        @if (role.Selected)
+                        {
+                            <input id="@role.Text" asp-for="@Model.NewRole" type="radio" value="@role.Text" checked />
+                            <label class="form-check-label" for="@role.Text">
+                                @role.Text
+                            </label>
+                        }
+                        else
+                        {
+                            <input id="@role.Text" asp-for="@Model.NewRole" type="radio" value="@role.Text" />
+                            <label class="form-check-label" for="@role.Text">
+                                @role.Text
+                            </label>
+                        }
+                    </div>
+                }
+            </div>
+            <button type="submit" class="btn btn-success">Save changes</button>
+            <button asp-area="Administration" asp-controller="ApplicationUsers" asp-action="GetAll" class="btn btn-primary">Back to all users</button>
+        </form>
+    </div>
+</div>

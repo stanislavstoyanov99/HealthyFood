@@ -72,6 +72,8 @@ namespace HealthyFood.Web
             services.AddTransient<ICategoriesService, CategoriesService>();
             services.AddTransient<IArticlesService, ArticlesService>();
             services.AddTransient<IFaqService, FaqService>();
+            services.AddTransient<IApplicationUsersService, ApplicationUsersService>();
+            services.AddTransient<IPrivacyService, PrivacyService>();
 
             var account = new Account(
                configuration["Cloudinary:AppName"],

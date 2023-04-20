@@ -78,5 +78,20 @@
             public const string QuestionLengthError = "Question must be between {2} and {1} symbols.";
             public const string AnswerLengthError = "Answer must be between {2} and {1} symbols.";
         }
+
+        public static class ApplicationUserValidation
+        {
+            public const string RoleSelectedError = "Please select role.";
+            public const string CreatedOnDisplayName = "Created On";
+        }
+
+        public static class PrivacyValidation
+        {
+            public const int PageContentMinLength = 1000;
+            public const int PageContentMaxLength = 15000;
+
+            public const string PageContentLengthError = "Page content must be between {2} and {1} symbols.";
+            public const string PageContentDisplayName = "Page Content";
+        }
     }
 }

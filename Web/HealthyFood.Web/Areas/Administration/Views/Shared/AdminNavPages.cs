@@ -17,7 +17,7 @@
 
         public static string Articles => "Articles";
 
-        public static string HealthyFoodUsers => "HealthyFoodUsers";
+        public static string ApplicationUsers => "ApplicationUsers";
 
         public static string PrivacyNavClass(ViewContext viewContext) => PageNavClass(viewContext, Privacy);
 
@@ -29,7 +29,7 @@
 
         public static string ArticlesNavClass(ViewContext viewContext) => PageNavClass(viewContext, Articles);
 
-        public static string HealthyFoodUsersNavClass(ViewContext viewContext) => PageNavClass(viewContext, HealthyFoodUsers);
+        public static string ApplicationUsersNavClass(ViewContext viewContext) => PageNavClass(viewContext, ApplicationUsers);
 
         protected static string PageNavClass(ViewContext viewContext, string page)
         {
