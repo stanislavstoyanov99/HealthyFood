@@ -35,6 +35,11 @@
             public const int ImagePathMaxLength = 1000;
         }
 
+        public static class ArticleCommentValidation
+        {
+            public const int ContentMaxLength = 300;
+        }
+
         public static class BlogPostValidation
         {
             public const int TitleMaxLength = 50;

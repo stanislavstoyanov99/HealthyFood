@@ -9,10 +9,11 @@
 
     public class Article : BaseDeletableModel<int>
     {
-        // public Article()
-        // {
-        //    this.ArticleComments = new HashSet<ArticleComment>();
-        // }
+        public Article()
+        {
+            this.ArticleComments = new HashSet<ArticleComment>();
+        }
+
         [Required]
         [MaxLength(TitleMaxLength)]
         public string Title { get; set; }
@@ -34,6 +35,6 @@
 
         public virtual ApplicationUser User { get; set; }
 
-        // public virtual ICollection<ArticleComment> ArticleComments { get; set; }
+        public virtual ICollection<ArticleComment> ArticleComments { get; set; }
     }
 }

@@ -17,6 +17,8 @@
 
         public int ReviewsCount { get; set; }
 
+        public int ArticleCommentsCount { get; set; }
+
         public int CategoriesCount { get; set; }
 
         public List<Category> TopCategories { get; set; }

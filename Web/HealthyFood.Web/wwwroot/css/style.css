@@ -183,7 +183,7 @@ button:focus {
     .top-navbar .navbar-light .navbar-nav .nav-item .nav-link:hover {
         background: #540404;
         color: #ffffff;
-        
+
     }
 
     .top-navbar .navbar-light .navbar-nav .nav-item.active .nav-link {
@@ -201,7 +201,7 @@ button:focus {
 
     .navbar-expand-lg .navbar-nav .dropdown-menu a {
         padding: 10px 10px;
-        
+
         text-transform: uppercase;
     }
 
@@ -506,7 +506,7 @@ button:focus {
 
 .gallery-box {
     max-width:100%;
-    height:auto;   
+    height:auto;
 }
 
 .tz-gallery {
@@ -818,7 +818,7 @@ button:focus {
     position: relative;
     display: block;
     background-color: #010101;
-    border-top: 1px solid rgba(207, 166, 113);
+    border-top: 1px solid rgb(207, 166, 113);
     padding: 30px 0;
     z-index: 1;
 }
@@ -1298,7 +1298,7 @@ blockquote {
     display: inline-block;
     width: 90%;
     margin-bottom:38px;
-    
+
 }
 
     .des-l p {
@@ -1307,7 +1307,7 @@ blockquote {
 
 .comment-item-right a {
     position:absolute;
-   
+
     font-size: 16px;
     font-weight: 500;
     margin-bottom:30px;

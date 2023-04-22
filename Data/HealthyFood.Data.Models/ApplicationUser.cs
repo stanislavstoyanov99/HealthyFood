@@ -20,6 +20,8 @@ namespace HealthyFood.Data.Models
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
 
+            this.Articles = new HashSet<Article>();
+            this.ArticleComments = new HashSet<ArticleComment>();
             this.BlogPosts = new HashSet<BlogPost>();
             this.BlogPostComments = new HashSet<BlogPostComment>();
             this.Recipes = new HashSet<Recipe>();
@@ -51,6 +53,10 @@ namespace HealthyFood.Data.Models
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
+
+        public virtual ICollection<Article> Articles { get; set; }
+
+        public virtual ICollection<ArticleComment> ArticleComments { get; set; }
 
         public virtual ICollection<BlogPost> BlogPosts { get; set; }
 

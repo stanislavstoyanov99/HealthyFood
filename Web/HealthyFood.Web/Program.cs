@@ -71,6 +71,7 @@ namespace HealthyFood.Web
             services.AddTransient<ICloudinaryService, CloudinaryService>();
             services.AddTransient<ICategoriesService, CategoriesService>();
             services.AddTransient<IArticlesService, ArticlesService>();
+            services.AddTransient<IArticleCommentsSertvice, ArticleCommentsService>();
             services.AddTransient<IFaqService, FaqService>();
             services.AddTransient<IApplicationUsersService, ApplicationUsersService>();
             services.AddTransient<IPrivacyService, PrivacyService>();
