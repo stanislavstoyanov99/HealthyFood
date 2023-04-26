@@ -1,5 +1,6 @@
 ﻿namespace HealthyFood.Services.Data.Interfaces
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -13,5 +14,9 @@
         Task EditAsync(RecipeEditViewModel recipeEditViewModel);
 
         IQueryable<TViewModel> GetAllRecipesAsQueryeable<TViewModel>();
+
+        Task<IEnumerable<TViewModel>> GetTopRecipesAsync<TViewModel>(int count = 0);
+
+        Task<IEnumerable<TViewModel>> GetAllRecipesAsync<TViewModel>();
     }
 }

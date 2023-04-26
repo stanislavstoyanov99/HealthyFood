@@ -118,6 +118,7 @@ namespace HealthyFood.Web
             }
 
             app.UseHttpsRedirection();
+            app.UseStatusCodePagesWithRedirects("/Home/HttpError?statusCode={0}");
             app.UseStaticFiles();
             app.UseCookiePolicy();
 

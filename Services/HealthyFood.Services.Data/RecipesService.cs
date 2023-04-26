@@ -1,6 +1,7 @@
 ﻿namespace HealthyFood.Services.Data
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -141,6 +142,29 @@
                 .To<TViewModel>();
 
             return recipes;
+        }
+
+        public async Task<IEnumerable<TViewModel>> GetAllRecipesAsync<TViewModel>()
+        {
+            var recipes = await this.recipesRepository
+               .All()
+               .OrderBy(r => r.Name)
+               .To<TViewModel>()
+               .ToListAsync();
+
+            return recipes;
+        }
+
+        public async Task<IEnumerable<TViewModel>> GetTopRecipesAsync<TViewModel>(int count = 0)
+        {
+            var topRecipes = await this.recipesRepository
+               .All()
+               .OrderByDescending(r => r.Rate)
+               .To<TViewModel>()
+               .Take(count)
+               .ToListAsync();
+
+            return topRecipes;
         }
 
         public async Task<TViewModel> GetViewModelByIdAsync<TViewModel>(int id)
