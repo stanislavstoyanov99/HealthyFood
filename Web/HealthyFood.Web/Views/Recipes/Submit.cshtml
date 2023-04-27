@@ -1,0 +1,150 @@
+﻿@using HealthyFood.Data.Models.Enumerations
+@using HealthyFood.Models.InputModels.AdministratorInputModels.Recipes
+@model RecipeCreateInputModel
+@{
+    this.ViewData["Title"] = "Submit Recipe";
+
+    var categories = Model.Categories.Select(x => new SelectListItem(x.Name, x.Id.ToString()));
+}
+
+<link rel="stylesheet" href="~/css/submit-recipe.css">
+
+<div class="container-fluid mt-80" id="grad1">
+    <div class="row justify-content-center mt-0">
+        <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+            <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                <h2><strong>Submit Recipe</strong></h2>
+                <p>Fill all form fields to go to next step</p>
+                <div class="row">
+                    <div class="col-md-12 mx-0">
+                        <form id="msform" asp-area="" asp-controller="Recipes" asp-action="Submit" enctype="multipart/form-data" method="post">
+                            <!-- progressbar -->
+                            <ul id="progressbar">
+                                <li class="active" id="main"><strong>Main info</strong></li>
+                                <li id="extra"><strong>Extra info</strong></li>
+                                <li id="confirm"><strong>Finish</strong></li>
+                            </ul>
+                            <!-- fieldsets -->
+                            <fieldset id="main-info">
+                                <div class="form-card">
+                                    <h2 class="fs-title">Main information</h2>
+                                    <div class="form-group">
+                                        <input asp-for="Name" class="form-control" placeholder="Name" />
+                                        <small class="text-muted">Enter recipe name</small>
+                                        <span asp-validation-for="Name" class="text-danger d-block"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Description"></label>
+                                        <textarea asp-for="Description" class="form-control inputTextarea"></textarea>
+                                        <small class="text-muted">Enter recipe description</small>
+                                        <span asp-validation-for="Description" class="text-danger d-block"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Ingredients"></label>
+                                        <textarea asp-for="Ingredients" class="form-control inputTextarea"></textarea>
+                                        <small class="text-muted">Enter recipe ingredients</small>
+                                        <span asp-validation-for="Ingredients" class="text-danger d-block"></span>
+                                    </div>
+                                    <div>
+                                        <label asp-for="PreparationTime"></label>
+                                        <div class="form-group mb-1 form-inline">
+                                            <input asp-for="PreparationTime" class="form-control w-25" />
+                                            <label>
+                                                <span><i class="far fa-clock" aria-hidden="true"></i></span>&nbsp;minutes
+                                            </label>
+                                        </div>
+                                        <small class="text-muted">How long will it take to prepare the recipe?</small>
+                                        <span asp-validation-for="PreparationTime" class="text-danger d-block"></span>
+                                    </div>
+                                    <div>
+                                        <label class="mt-3" asp-for="CookingTime"></label>
+                                        <div class="form-group mb-1 form-inline">
+                                            <input asp-for="CookingTime" class="form-control w-25" />
+                                            <label>
+                                                <span><i class="far fa-clock" aria-hidden="true"></i></span>&nbsp;minutes
+                                            </label>
+                                        </div>
+                                        <small class="text-muted small-color">How many minutes you are going to cook?</small>
+                                        <span asp-validation-for="CookingTime" class="text-danger d-block"></span>
+                                    </div>
+                                    <div>
+                                        <label class="mt-3" asp-for="PortionsNumber"></label>
+                                        <div class="form-group mb-1 form-inline">
+                                            <input asp-for="PortionsNumber" class="form-control w-25" />
+                                            <label>
+                                                <span><i class="fas fa-utensils" aria-hidden="true"></i></span>&nbsp;portions
+                                            </label>
+                                        </div>
+                                        <small class="text-muted small-color">How many portions you are going to make?</small>
+                                        <span asp-validation-for="PortionsNumber" class="text-danger d-block"></span>
+                                    </div>
+                                </div>
+                                <input type="button" name="next" class="next action-button" value="Next Step" />
+                            </fieldset>
+                            <fieldset id="extra-info">
+                                <div class="form-card">
+                                    <h2 class="fs-title">Extra Information</h2>
+                                    <div class="form-group">
+                                        <label asp-for="Image"></label>
+                                        <input asp-for="Image" type="file" name="Image" />
+                                        <span asp-validation-for="Image" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Difficulty"></label>
+                                        <select class="form-control" asp-for="Difficulty"
+                                                asp-items="@(Html.GetEnumSelectList<Difficulty>())">
+                                            <option selected="" disabled="">Select difficulty</option>
+                                        </select>
+                                        <span asp-validation-for="Difficulty" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="CategoryId"></label>
+                                        <div class="container">
+                                            <select asp-for="CategoryId" asp-items="categories" class="selectpicker show-tick" data-size="5">
+                                                <option disabled="">
+                                                    Select Category
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                                <input type="submit" name="next" class="next action-button" value="Confirm" />
+                            </fieldset>
+                            <fieldset id="success">
+                                <div class="form-card">
+                                    <h2 class="fs-title text-center">Success</h2> <br><br>
+                                    <div class="row justify-content-center">
+                                        <div class="col-3">
+                                            <img src="~/images/ok--v2.png" class="fit-image">
+                                        </div>
+                                    </div> <br><br>
+                                    <div class="row justify-content-center">
+                                        <div class="col-7 text-center">
+                                            <h5>You Have Successfully Created Recipe</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="/lib/tinymce/tinymce.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        tinymce.init({
+            selector: ".inputTextarea",
+            plugins: [
+                "image paste table link code media"
+            ]
+        });
+    </script>
+    <script src="~/js/submit-recipe.js" type="text/javascript"></script>
+}

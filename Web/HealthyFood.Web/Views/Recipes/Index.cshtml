@@ -1,0 +1,175 @@
+﻿@using System.Web
+@using HealthyFood.Models.ViewModels.Recipes
+@using System.Text.RegularExpressions;
+@model RecipeIndexPageViewModel
+@{
+    this.ViewData["Title"] = "Recipes";
+}
+
+@{
+    var prevDisabled = !Model.RecipesPaginated.HasPreviousPage ? "disabled" : "";
+    var prevPage = !Model.RecipesPaginated.HasPreviousPage ? "1" : (Model.RecipesPaginated.PageIndex - 1).ToString();
+    var nextDisabled = !Model.RecipesPaginated.HasNextPage ? "disabled" : "";
+    var nextPage = !Model.RecipesPaginated.HasNextPage ? "1" : (Model.RecipesPaginated.PageIndex + 1).ToString();
+}
+
+@{
+    var queryString = this.Context.Request.QueryString;
+
+    bool hasQueryString = queryString.HasValue;
+    bool isAllTabSelected = false;
+    string queryParameter = string.Empty;
+
+    if (hasQueryString)
+    {
+        var encodedQueryString = HttpUtility.UrlDecode(queryString.Value);
+
+        string pattern = "categoryName=([^&#]+)";
+        if (Regex.IsMatch(encodedQueryString, pattern))
+        {
+            queryParameter = Regex.Match(encodedQueryString, pattern).Value.Split("=")[1];
+        }
+        else
+        {
+            isAllTabSelected = true;
+        }
+    }
+}
+
+<!-- Start All Pages -->
+<div class="all-page-title page-breadcrumb">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Recipes</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Pages -->
+<!-- Start Recipes -->
+<div class="menu-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="heading-title text-center">
+                    <h2>Recipes</h2>
+                    <p>Find the perfect food and drink ideas for every ocassion, from weeknight dinners to holiday feasts</p>
+                </div>
+            </div>
+        </div>
+        <div class="row inner-menu-box">
+            <div class="col-3">
+                <div class="nav nav-pills" id="v-pills-tab" role="tabpanel" aria-orientation="vertical">
+                    <div id="myTab" class="nav flex-column nav-tabs" role="tablist">
+                        <a class="nav-link @(!hasQueryString || isAllTabSelected ? "active" : "")" asp-action="Index">All</a>
+                        @foreach (var category in Model.Categories)
+                        {
+                            <a class="nav-link @(category.Name == queryParameter ? "active" : "")"
+                               asp-action="Index"
+                               asp-route-categoryName="@category.Name">@category.Name
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                        <div class="row">
+                            @if (Model.RecipesPaginated.Count != 0)
+                            {
+                                @foreach (var recipe in Model.RecipesPaginated)
+                                {
+                                    <div class="col-lg-4 col-md-6 mt-4 recipe-card special-grid drinks">
+                                        <div class="gallery-single fix">
+                                            <img src="@recipe.ImagePath" class="img-fluid" alt="Image">
+                                            <div class="why-text">
+                                                <a asp-controller="Recipes" asp-action="Details" asp-route-id="@recipe.Id">
+                                                    <h4>@recipe.Name</h4>
+                                                </a>
+                                                <p>
+                                                    @if (recipe.Rate == 0)
+                                                    {
+                                                        <strong>No Rate yet!</strong>
+                                                    }
+                                                    else
+                                                    {
+                                                        for (int i = 0; i < recipe.Rate; i++)
+                                                        {
+                                                            <i class="fas fa-star star"></i>
+                                                        }
+                                                    }
+                                                </p>
+                                                <h5><i class="fas fa-tachometer-alt"></i> @recipe.Difficulty</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <div class="alert alert-danger" role="alert">
+                                    We have no recipes provided for that category.
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                @if (Model.RecipesPaginated.TotalPages != 0)
+                {
+                    <div class="col-lg-12 col-md-6 mb-4">
+                        <nav id="PaginationNav" aria-label="Page navigation">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item @prevDisabled">
+                                    <a class="page-link inactive" asp-action="Index" asp-route-pageNumber="@prevPage">
+                                        Previous
+                                    </a>
+                                </li>
+                                @for (int i = 1; i <= Model.RecipesPaginated.TotalPages; i++)
+                                {
+                                    var active = i == Model.RecipesPaginated.PageIndex ? "active CH-color" : "inactive";
+                                    <li class="page-item @active">
+                                        <a class="page-link @active"
+                                           asp-action="Index"
+                                           asp-route-pageNumber="@i"
+                                           asp-route-categoryName="@this.TempData["CategoryName"]">
+                                            @i
+                                        </a>
+                                    </li>
+                                }
+                                <li class="page-item @nextDisabled">
+                                    <a class="page-link inactive" asp-action="Index" asp-route-pageNumber="@nextPage">
+                                        Next
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Recipes -->
+<!-- Start QT -->
+<div class="qt-box qt-background">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto text-center">
+                <p class="lead ">
+                    " If you're not the one cooking, stay out of the way and compliment the chef. "
+                </p>
+                <span class="lead">Michael Strahan</span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End QT -->
+
+<a href="#" id="back-to-top" title="Back to top" style="display: none;">
+    <i class="fas fa-angle-double-up" aria-hidden="true"></i>
+</a>
+<a asp-controller="Home" asp-action="Chat" id="chat-btn" title="Chat" style="display: none;">
+    <i class="fas fa-comment" aria-hidden="true"></i>
+</a>

@@ -1,0 +1,211 @@
+﻿@using HealthyFood.Models.ViewModels.Recipes
+@model MyRecipeDetailsViewModel
+
+@{
+    ViewData["Title"] = "RecipeList";
+    var categories = Model.RecipeEditViewModel.Categories.Select(x => new SelectListItem(x.Name, x.Id.ToString()));
+}
+
+<div class="conteiner-fluid mt-80 d-flex flex-column bg-userList h-100" style="min-height:500px;">
+    <div class="row h-100 justify-content-center">
+        <div class="col-12 col-md-9">
+            <div id="accordion">
+                @if (Model.Recipes.Count() != 0)
+                {
+                    @foreach (var recipe in Model.Recipes)
+                    {
+                        <div class="card br-black" id="@recipe.Id">
+                            <div class="card-header text-center ">
+                                <a class="collapsed card-link" data-toggle="collapse" data-target="#collapse_@recipe.Id" href="#@recipe.Name">
+                                    @recipe.Name
+                                </a>
+                                <a class="btn" asp-controller="Recipes" asp-action="Details" asp-route-id="@recipe.Id">
+                                    <i class="fas fa-window-maximize"></i>View Recipe
+                                </a>
+                                <button class="btn" type="button" onclick="showModal(@recipe.Id)">
+                                    <i class="fas fa-edit"></i>Edit Recipe
+                                </button>
+                                <a class="btn" asp-controller="Recipes" asp-action="Remove" asp-route-id="@recipe.Id">
+                                    <i class="fas fa-trash-alt"></i>Delete Recipe
+                                </a>
+                            </div>
+                            <div id="collapse_@recipe.Id" class="collapse" data-parent="#accordion">
+                                <div class="card-body ">
+                                    <div class="row">
+                                        <div class="col-6 col-xl-3 br-black listpic">
+                                            <img class="img-fluid listpic" src="@recipe.ImagePath" alt="Recipe Image @recipe.Id" />
+                                        </div>
+                                        <div class="col-6 col-xl-3 br-black">
+                                            <div class="row w-100">
+                                                <div class="col-12">Difficulty: @recipe.Difficulty</div>
+                                                <div class="col-12">Portions Number: @recipe.PortionsNumber</div>
+                                                <div class="col-12">Preparation Time: @recipe.PreparationTime</div>
+                                                <div class="col-12">Cooking Time: @recipe.CookingTime</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-xl-3 bg-dark text-light ovfl-s recipelist-height">
+                                            Description:<br>
+                                            @Html.Raw(recipe.SanitizedDescription)
+                                        </div>
+                                        <div class="col-6 col-xl-3 bg-dark text-light ovfl-s recipelist-height">
+                                            Ingredients:<br>
+                                            @Html.Raw(recipe.SanitizedIngredients)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="alert alert-warning mt-3" role="alert">
+                        There are not any recipes submitted yet! Submit one by visiting this <a asp-controller="Recipes" asp-action="Submit">page</a>.
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="editrecipeModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header CH-color">
+                <h5 class="modal-title CH-color">Edit your Recipe</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="edit">
+                <form asp-controller="Recipes" asp-action="Edit" enctype="multipart/form-data" method="post">
+                    <div class="form-group">
+                        <label asp-for="RecipeEditViewModel.Name"></label>
+                        <input id="Name" asp-for="RecipeEditViewModel.Name" class="form-control" />
+                        <span asp-validation-for="RecipeEditViewModel.Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RecipeEditViewModel.Description"></label>
+                        <textarea id="Description" asp-for="RecipeEditViewModel.Description" class="form-control"></textarea>
+                        <span asp-validation-for="RecipeEditViewModel.Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RecipeEditViewModel.Ingredients"></label>
+                        <textarea id="Ingredients" asp-for="RecipeEditViewModel.Ingredients" class="form-control"></textarea>
+                        <span asp-validation-for="RecipeEditViewModel.Ingredients" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RecipeEditViewModel.PreparationTime"></label>
+                        <input id="PreparationTime" asp-for="RecipeEditViewModel.PreparationTime" class="form-control" />
+                        <span asp-validation-for="RecipeEditViewModel.PreparationTime" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RecipeEditViewModel.CookingTime"></label>
+                        <input id="CookingTime" asp-for="RecipeEditViewModel.CookingTime" class="form-control" />
+                        <span asp-validation-for="RecipeEditViewModel.CookingTime" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RecipeEditViewModel.PortionsNumber"></label>
+                        <input id="PortionsNumber" asp-for="RecipeEditViewModel.PortionsNumber" class="form-control" />
+                        <span asp-validation-for="RecipeEditViewModel.PortionsNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Old Image</label>
+                        <div class="form-group">
+                            <input id="OldImagePath" asp-for="RecipeEditViewModel.ImagePath" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <img id="ImagePath" class="img-fluid img-thumbnail" alt="Image" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RecipeEditViewModel.Image"></label>
+                        <input type="file" asp-for="RecipeEditViewModel.Image" name="RecipeEditViewModel.Image" />
+                        <span asp-validation-for="RecipeEditViewModel.Image" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RecipeEditViewModel.Difficulty"></label>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input id="Easy" type="radio" asp-for="RecipeEditViewModel.Difficulty" class="form-check-input" value="Easy">Easy
+                                <span asp-validation-for="RecipeEditViewModel.Difficulty" class="text-danger"></span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input id="Medium" type="radio" asp-for="RecipeEditViewModel.Difficulty" class="form-check-input" value="Medium">Medium
+                                <span asp-validation-for="RecipeEditViewModel.Difficulty" class="text-danger"></span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input id="Hard" type="radio" asp-for="RecipeEditViewModel.Difficulty" class="form-check-input" value="Hard">Hard
+                                <span asp-validation-for="RecipeEditViewModel.Difficulty" class="text-danger"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RecipeEditViewModel.CategoryId"></label>
+                        <div class="container">
+                            <select id="Categories" asp-for="RecipeEditViewModel.CategoryId" asp-items="categories">
+                                <option selected="" disabled="">
+                                    Select Category
+                                </option>
+                            </select>
+                        </div>
+                        <span asp-validation-for="RecipeEditViewModel.CategoryId" class="text-danger"></span>
+                    </div>
+                    <input id="RecipeId" type="hidden" asp-for="RecipeEditViewModel.Id" />
+                    <button type="submit" class="btn btn-success">Save changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script src="/lib/tinymce/tinymce.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        tinymce.init({
+            selector: "textarea",
+            plugins: [
+                "image paste table link code media"
+            ]
+        });
+    </script>
+
+    <script>
+        function showModal(id) {
+            $.ajax({
+                url: "/Recipes/GetRecipe",
+                type: "GET",
+                data: { 'id': id },
+                success: function (res) {
+                    $('#Name').val(res.name);
+                    tinyMCE.get('Description').setContent(res.sanitizedDescription);
+                    tinyMCE.get('Ingredients').setContent(res.sanitizedIngredients);
+                    $('#PreparationTime').val(res.preparationTime);
+                    $('#CookingTime').val(res.cookingTime);
+                    $('#PortionsNumber').val(res.portionsNumber);
+                    $('#OldImagePath').val(res.imagePath);
+                    $('#ImagePath').attr('src', res.imagePath);
+                    $('#Categories').val(res.categoryId);
+                    $('#RecipeId').val(id);
+
+                    switch (res.difficulty) {
+                        case 0:
+                            $('#Hard').prop('checked', true);
+                            break;
+                        case 1:
+                            $('#Medium').prop('checked', true);
+                            break;
+                        case 2:
+                            $('#Easy').prop('checked', true);
+                            break;
+                    }
+                }
+            });
+
+            $('#editrecipeModal').modal('show');
+        }
+    </script>
+}

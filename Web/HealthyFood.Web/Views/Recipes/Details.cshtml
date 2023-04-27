@@ -1,0 +1,78 @@
+﻿@using HealthyFood.Data.Models.Enumerations;
+@model HealthyFood.Models.ViewModels.Recipes.RecipeDetailsPageViewModel
+@{
+    this.ViewData["Title"] = $"{Model.Recipe.Name}";
+}
+
+<div class="main-body mt-80 conteiner-fluid">
+    <div class="recipeDetailsPage">
+        <div class="row br-12" style="background-color:#540404; margin: 0px 10px 0px 10px; height:100%; border : 3px outset #540404;">
+            <div class="col-12 col-lg-6   centered">
+                <div class="conteiner d-flex flex-column h-100" id="recipeBody">
+                    <div class="conteiner" id="recipeHeading">
+                        <h1 class="recipeTitle"><span>@Model.Recipe.Name</span></h1>
+                        <p id="recipeSubTitle">
+                            Author: @Model.Recipe.UserUsername | Category: @Model.Recipe.Category.Name | Rating:
+                            @for (int i = 0; i < Model.Recipe.Rate; i++)
+                            {
+                                <i class="fas fa-star star"></i>
+                            }
+                        </p>
+                    </div>
+                    <div class="flex-grow-1 recipeText">
+                        @Html.Raw(Model.Recipe.SanitizedDescription)
+                    </div>
+                    <div class="row" id="recipeProps">
+                        <div class="col-auto recipeProperty">
+                            Difficulty:<br>
+                            @if (Model.Recipe.Difficulty == Difficulty.Easy)
+                            {
+                                <strong style="color:green">@Model.Recipe.Difficulty</strong>
+                            }
+                            else if (Model.Recipe.Difficulty == Difficulty.Medium)
+                            {
+                                <strong style="color:orange">@Model.Recipe.Difficulty</strong>
+                            }
+                            else
+                            {
+                                <strong style="color:darkred">@Model.Recipe.Difficulty</strong>
+                            }
+                        </div>
+                        <div class="col-auto recipeProperty">
+                            Preperation time:<br> @Model.Recipe.PreparationTime mins
+                        </div>
+                        <div class="col-auto recipeProperty">
+                            Portions Number:<br> @Model.Recipe.PortionsNumber
+                        </div>
+                        <div class="col-auto recipeProperty">
+                            Cooking Time:<br> @Model.Recipe.CookingTime mins
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12  col-lg-6 ing-img">
+                <div class="recipeImage">
+                    <img class="img-fluid recipe-img" src="@Model.Recipe.ImagePath" />
+                </div>
+                <div class="recipeIngredients">
+                    @Html.Raw(Model.Recipe.SanitizedIngredients)
+                </div>
+            </div>
+        </div>
+        <div class="recipeReviews">
+            <h2 class="centered"><strong>Reviews:</strong></h2>
+            <div class="alert alert-danger" role="alert">
+                There are not any reviews for this recipe yet!
+            </div>
+            <div class="row" style="padding: 0 50px 0 50px;">
+                @if (!this.User.Identity.IsAuthenticated)
+                {
+                    <a asp-area="Identity"
+                       asp-page="/Account/Login"
+                       asp-route-returnUrl="/Recipes/Details/@Model.Recipe.Id"
+                       class="btn btn-CH ml-auto">Sign in to create a review</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>

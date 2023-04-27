@@ -18,5 +18,9 @@
         Task<IEnumerable<TViewModel>> GetTopRecipesAsync<TViewModel>(int count = 0);
 
         Task<IEnumerable<TViewModel>> GetAllRecipesAsync<TViewModel>();
+
+        IQueryable<TViewModel> GetAllRecipesByFilterAsQueryeable<TViewModel>(string categoryName = null);
+
+        Task<IEnumerable<TViewModel>> GetAllRecipesByUserId<TViewModel>(string userId);
     }
 }
