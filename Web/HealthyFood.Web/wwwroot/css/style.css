@@ -195,7 +195,6 @@ button:focus {
 
     .navbar-expand-lg .navbar-nav .dropdown-menu a {
         padding: 10px 10px;
-
         text-transform: uppercase;
     }
 
@@ -1713,3 +1712,177 @@ primary:not(:disabled):not(.disabled):active:focus {
 a.text-light:focus, a.text-light:hover {
     color: #FEA116 !important;
 }
+
+/*------------------------------------------------------------------
+    Admin Panel > Manage Account
+-------------------------------------------------------------------*/
+.fa-user {
+    margin-right: 0.3rem;
+}
+.container-fluid.nav-bug.no-padding .acount-manage {
+    display: flex;
+    justify-content: center;
+}
+
+main > .acount-manage > .container.mt-80.mb-3 {
+    background-color: #222634;
+    padding: 2rem;
+    border-radius: 0.4rem;
+    margin: 6rem 0 !important;
+}
+
+.container.mt-80.mb-3 h2, h4 {
+    color: white !important;
+}
+
+#profile-form label {
+    color: white !important;
+}
+
+.container.mt-80.mb-3 .nav-link {
+    color: white;
+}
+
+    .container.mt-80.mb-3 .nav-link:hover {
+        color: #FEA116;
+        font-weight: bold;
+    }
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-lin {
+    background-color: transparent !important;
+    color: #FEA116 !important;
+    font-weight: bold;
+}
+
+.col-md-9 {
+    color: white;
+}
+
+.col-md-9 h3 {
+    color: white;
+}
+
+.container.mt-80.mb-3 .row #delete {
+    margin-top: 0.5rem;
+}
+
+.container.mt-80.mb-3 #email-verification {
+    color: #FEA116;
+    font-weight: 500;
+}
+
+.container.mt-80.mb-3 #email-verification:hover {
+    font-weight: bold;
+}
+
+/*------------------------------------------------------------------
+    Admin Panel > Dashboard
+-------------------------------------------------------------------*/
+#DashboardCon .row .col-md-3 {
+    border-bottom: 3px solid white;
+    border-color: #FEA116 !important;
+}
+
+#DashboardCon .row .col-md-3 a {
+    display: block;
+}
+
+    #DashboardCon .row .col-md-3 a:hover {
+        color: #FEA116;
+        font-weight: bold;
+        background-color: transparent !important;
+    }
+
+    #DashboardCon .row .col-md-3 a:active {
+        color: #FEA116;
+        font-weight: bold;
+        background-color: transparent;
+    }
+
+    #DashboardCon .row .col-md-3 a:focus {
+        color: #FEA116;
+        font-weight: bold;
+        background-color: transparent;
+    }
+
+    #DashboardCon .row .col-md-3 button:hover {
+        color: #FEA116;
+        font-weight: bold;
+        background-color: transparent;
+    }
+
+#DashboardCon .row {
+    border-color: #FEA116 !important;
+}
+
+#DashboardCon .row .col-md-9 {
+    border-bottom: 3px solid white;
+    border-color: #FEA116 !important;
+}
+
+    #DashboardCon .row .row .col-12 {
+        border-color: #FEA116 !important;
+    }
+
+        #DashboardCon .row .row .col-12:first-child {
+            flex-basis: 57.5%;
+            margin-right: 0.5rem;
+        }
+
+    #DashboardCon .row .row .centered {
+        margin-bottom: 0.5rem;
+    }
+
+.container-fluid.nav-bug.no-padding {
+    border-bottom: 1px solid #FEA116;
+}
+
+    .container-fluid.nav-bug.no-padding .justify-content-center.text-center {
+        border: 1px solid #FEA116;
+        padding: 1rem;
+        margin-bottom: 3rem;
+    }
+
+.bg-white, .bg-dark {
+    background-color: transparent !important;
+}
+
+/*------------------------------------------------------------------
+    Admin Panel > Recepies
+-------------------------------------------------------------------*/
+
+#DashboardCon .row .col-md-9 .row .col-md-9 .form-group .form-check-input {
+    accent-color: #FEA116 !important;
+}
+
+#DashboardCon .row .col-md-9 .row .col-md-9 .form-group .container {
+    padding: 0;
+}
+
+#DashboardCon .row .col-md-9 .row .col-md-9 .form-group .container select {
+    padding: 0.5rem;
+}
+
+    #DashboardCon .row .col-md-9 .row .col-md-9 .form-group .container select:focus-visible {
+        border: 1px solid #FEA116;
+        outline: none;
+    }
+
+
+#DashboardCon .row .row .col-md-9 button {
+    margin-bottom: 1rem;
+}
+
+/*------------------------------------------------------------------
+    Error
+-------------------------------------------------------------------*/
+main > .error .btn-primary, .btn-secondary {
+    background-color: transparent !important;
+    color: #222634 !important;
+    border: 2px solid #222634 !important;
+}
+
+    main > .error .btn-primary:hover, .btn-secondary:hover {
+        background-color: #222634 !important;
+        color: #FEA116 !important;
+    }

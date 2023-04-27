@@ -31,7 +31,7 @@
 }
 
 .nav-bug {
-    margin-top: 110px !important;
+    margin-top: 80px !important;
 }
 
 .no-ovfl {
@@ -63,8 +63,22 @@
 }
 
 #admin-btn {
-    background-color: #540404;
     color: white;
+}
+
+    #admin-btn:hover {
+        color: #FEA116;
+        font-weight: bold;
+    }
+
+.btn:focus {
+    box-shadow: none !important;
+}
+
+.dropdown-menu {
+    background-color: #222634;
+    padding: 0.5rem 0.5rem !important;
+    top: 95% !important;
 }
 
 .btn-CH:hover {
@@ -117,8 +131,7 @@
 }
 
 .admin-conteiner {
-    background-image: url("../images/dashboard-background2.jpg");
-    background-size: cover;
+    background-color: #222634;
 }
 
     .admin-conteiner h1,
@@ -501,7 +514,7 @@
 
 .btn-secondary:hover {
     background: #540404;
-    color: #fff !important;
+    color: #fff;
 }
 
 .btn-primary {
@@ -608,17 +621,15 @@
     display: none;
     background-color: transparent;
     overflow: hidden;
-    padding-left: 23px;
+    padding-left: 45px;
     transition: 0.4s;
 }
     .nav-panel div {
-        margin-top: 18px;
-        margin-bottom: 18px;
-        transition: 0.4s;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        transition: 0.3s;
     }
-    .nav-panel div:hover {
-        background-color: #222222;
-    }
+    
 .admin-nav {
     background-color: transparent;
     color: black;
