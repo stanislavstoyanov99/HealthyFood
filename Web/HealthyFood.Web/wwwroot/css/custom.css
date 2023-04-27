@@ -17,11 +17,6 @@
     border-color: darkgrey !important;
 }
 
-.ch-border {
-    border-left: 8px solid #540404;
-    border-right: 8px solid #540404;
-}
-
 .main-body {
     padding-left: 50px;
     padding-right: 50px;
@@ -36,7 +31,7 @@
 }
 
 .nav-bug {
-    margin-top: 130px !important;
+    margin-top: 110px !important;
 }
 
 .no-ovfl {
@@ -516,9 +511,18 @@
 }
 
     .btn-primary:hover {
-        background: #540404;
-        color: #fff !important;
-        border-color: #540404;
+        color: #FEA116;
+        background-color: transparent;
+    }
+
+    .btn-primary:active {
+        color: #FEA116;
+        background-color: transparent;
+    }
+
+    .btn-primary:focus {
+        color: #FEA116;
+        background-color: transparent;
     }
 
 .btn-fb {

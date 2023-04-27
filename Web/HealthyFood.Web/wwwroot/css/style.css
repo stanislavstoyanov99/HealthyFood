@@ -180,12 +180,6 @@ button:focus {
         text-transform: uppercase;
     }
 
-    .top-navbar .navbar-light .navbar-nav .nav-item .nav-link:hover {
-        background: #540404;
-        color: #ffffff;
-
-    }
-
     .top-navbar .navbar-light .navbar-nav .nav-item.active .nav-link {
         background: #540404;
         color: #ffffff;
@@ -214,10 +208,39 @@ button:focus {
     background: #540404;
 }
 
+.navbar {
+    background-color: #222634;
+}
+
+.top-navbar .navbar-light .navbar-nav .nav-link {
+    color: white;
+}
+
+    .top-navbar .navbar-light .navbar-nav .nav-link:hover {
+        background-color: transparent;
+        color: #FEA116;
+        transition: .2s;
+        font-weight: bold;
+    }
+
+.header-title {
+    color: #FEA116;
+    font-size: 1.8rem;
+    padding:0;
+}
+
+    .header-title:hover {
+        transition: .2s;
+        font-weight: bold;
+    }
+
+    .header-title .header-icon {
+        margin-right: 0.7rem;
+    }
+
 /*------------------------------------------------------------------
     Slider
 -------------------------------------------------------------------*/
-
 .cover-slides {
     height: 100vh;
 }
@@ -249,6 +272,7 @@ button:focus {
     height: 100%;
     position: relative;
     z-index: 2;
+    padding: 0;
 }
 
     .cover-slides .container > .row {
@@ -672,28 +696,14 @@ button:focus {
 }
 
 .bg-f {
-    background-image: url("../images/footer-bg.jpg");
-    background-attachment: scroll;
-    background-clip: initial;
-    background-color: rgba(0, 0, 0, 0);
-    background-origin: initial;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: #222634;
     position: relative;
 }
 
-    .bg-f::before {
-        background: #010101;
-        content: "";
-        height: 100%;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        z-index: 1;
-        opacity: 0.8;
-    }
+.col-lg-6, .col-md-6 {
+    padding: 0 30px !important;
+}
+
 
 .footer-area .container {
     position: relative;
@@ -711,7 +721,7 @@ button:focus {
 
 .footer-area p {
     font-size: 15px;
-    color: rgba(255, 255, 255, 0.8);
+    color: white;
     margin: 0;
     padding-bottom: 10px;
 }
@@ -744,7 +754,7 @@ button:focus {
     }
 
         .footer-area p.lead a:hover {
-            color: #d65106;
+            color: #FEA116;
         }
 
 .footer-area p a {
@@ -753,7 +763,7 @@ button:focus {
 }
 
     .footer-area p a:hover {
-        color: #540404;
+        color: #FEA116;
     }
 
 .subscribe_form {
@@ -798,27 +808,46 @@ button:focus {
 .f-social {
     padding-bottom: 10px;
     margin: 0px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
     .f-social li a {
         font-size: 18px;
-        color: #540404;
         width: 38px;
         height: 38px;
         display: block;
         text-align: center;
         line-height: 38px;
-        background: #ffffff;
-        border-radius: 4px;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        border: 1px solid #fff;
+        border-radius: 35px;
+        transition: .3s;
     }
 
+        .f-social li a:hover {
+            background-color:white;
+            color: #FEA116;
+            scale:1.05;
+        }
+
+        .f-social li:hover {
+            scale: 1.1;
+        }
+
+#privacy-footer:hover {
+    color: #FEA116;
+}
+
 .copyright {
+    background-color: #222634;
     margin-top: 20px;
     position: relative;
     display: block;
-    background-color: #010101;
-    border-top: 1px solid rgb(207, 166, 113);
+    border-top: 1px solid #FEA116;
     padding: 30px 0;
     z-index: 1;
 }
@@ -1035,17 +1064,17 @@ button:focus {
 
 .contact-form {
     border-radius: 25px;
-    border-color: #540404;
+    border-color: #FEA116;
     min-height: 50px;
 }
 
 .form-control:focus {
-    border: 1px solid #540404;
+    border: 2px solid #FEA116;
     box-shadow: none;
 }
 
 .form-group .picker__input.picker__input--active {
-    border-color: #540404;
+    border-color: #FEA116;
 }
 
 .submit-button {
@@ -1053,10 +1082,10 @@ button:focus {
 }
 
 .btn.btn-common {
-    color: #540404;
+    color: #FEA116;
     background-color: transparent;
     background-image: none;
-    border-color: #540404;
+    border-color: #FEA116;
 }
 
     .btn.btn-common:hover {
@@ -1578,4 +1607,109 @@ blockquote {
 
 .faq-box {
     padding: 20px;
+}
+
+/*------------------------------------------------------------------
+    Alerts
+-------------------------------------------------------------------*/
+.alert-info {
+    background-color: #222634;
+    color: white;
+}
+
+.alert-info a {
+    color: white;
+}
+
+    .alert-info a:hover {
+        color: #FEA116;
+    }
+
+.close {
+    text-shadow: none !important;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+
+.btn-primary:focus {
+    border: none;
+    box-shadow: none;
+}
+
+primary:not(:disabled):not(.disabled):active:focus {
+    box-shadow: none;
+}
+
+/*------------------------------------------------------------------
+    Register Form
+-------------------------------------------------------------------*/
+.register-form {
+    margin: 3rem 0;
+}
+
+.register {
+    background-color: #222634;
+    padding: 2rem !important;
+    border-radius: 0.4rem;
+}
+
+    .register input {
+        border-radius: 0.4rem;
+        accent-color: #FEA116;
+    }
+
+.form-check-inline .form-check-input:last-child {
+    margin-left: 1rem;
+}
+
+.btn-primary {
+    background-color: transparent !important;
+    color: white !important;
+    border-color: white !important;
+}
+
+    .btn-primary:hover {
+        background-color: white !important;
+        color: #FEA116 !important;
+        border-color: #FEA116 !important;
+    }
+
+    .btn-primary:focus {
+        background-color: white !important;
+        color: #FEA116 !important;
+        border-color: #FEA116 !important;
+    }
+
+    .btn-primary:not(:disabled):not(.disabled):active:focus {
+        box-shadow: none !important;
+        border: 2px solid #FEA116 !important;
+    }
+
+.text-danger {
+    color: #FEA116 !important;
+}
+
+/*------------------------------------------------------------------
+    Login Form
+-------------------------------------------------------------------*/
+.login-form {
+    margin: 3rem 0;
+}
+
+.login {
+    background-color: #222634;
+    padding: 2rem !important;
+    border-radius: 0.4rem;
+}
+
+    .login input {
+        border-radius: 0.4rem;
+        accent-color: #FEA116;
+    }
+
+a.text-light:focus, a.text-light:hover {
+    color: #FEA116 !important;
 }

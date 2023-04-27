@@ -14,10 +14,9 @@
 
 .sendgrid-subscription-widget .sg-submit-btn {
     display: inline-block;
-    color: #fff;
-    border: 1px solid #ccc;
+    color: white;
     border-radius: 5px;
-    background: #540404;
+    background-color: transparent;
     box-shadow: 0 0 5px -1px rgba(0, 0, 0, .2);
     cursor: pointer;
     vertical-align: middle;
@@ -28,10 +27,11 @@
     font-size: .9em;
 }
 
-.sendgrid-subscription-widget .sg-submit-btn:hover {
-    background-color: #fff;
-    color: #540404;
-}
+    .sendgrid-subscription-widget .sg-submit-btn:hover {
+        background-color: white;
+        color: #FEA116;
+        border: 1px solid #FEA116;
+    }
 
 .sendgrid-subscription-widget .sg-submit-btn:active {
     color: #8e8b8b;
@@ -49,16 +49,28 @@
 }
 
 .sendgrid-subscription-widget .error, .sendgrid-subscription-widget .sg-consent-text a {
-    color: #3097d1
+    color: #3097d1;
 }
 
 .sendgrid-subscription-widget .sg-consent-text {
-    font-size: .9em
+    margin-top: 0.5rem;
+    font-size: .9em; 
+    color: white;
 }
 
 .sendgrid-subscription-widget .sg-consent-text label {
     font-weight: 400
 }
+
+.sg-consent-text input {
+    accent-color: #FEA116;
+}
+
+.sg_email:focus-visible {
+    border: 2px solid #FEA116 !important;
+    outline: none;
+}
+
 
 .sendgrid-subscription-widget .required {
     outline: 1px solid #f00;
