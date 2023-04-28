@@ -1,0 +1,104 @@
+﻿@using HealthyFood.Models.ViewModels.Articles
+@model PaginatedList<ArticleListingViewModel>
+@{
+    this.ViewData["Title"] = "Articles";
+}
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var prevPage = !Model.HasPreviousPage ? "1" : (Model.PageIndex - 1).ToString();
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    var nextPage = !Model.HasNextPage ? "1" : (Model.PageIndex + 1).ToString();
+}
+
+<!-- Start All Pages -->
+<div class="all-page-title page-breadcrumb">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Articles</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Pages -->
+
+<!-- Start articles -->
+<div class="blog-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="heading-title text-center">
+                    <h2>Articles</h2>
+                    <p>Different amazing information about articles</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var article in Model)
+            {
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="blog-box-inner">
+                        <div class="blog-img-box">
+                            <img class="img-fluid home-pic" src="@article.ImagePath" alt="image_@article.Id">
+                        </div>
+                        <div class="blog-detail">
+                            <h4>@article.Title</h4>
+                            <ul>
+                                <li>
+                                    <span>Post by <i class="fa fa-user"></i> @article.UserUsername</span>
+                                </li>
+                                <li>|</li>
+                                <li>
+                                    <span><i class="fa fa-calendar"></i> @article.CreatedOn.ToShortDateString()</span>
+                                </li>
+                            </ul>
+                            <p>@Html.Raw(article.SanitizedShortDescription)</p>
+                            <a class="btn btn-lg btn-circle btn-outline-new-white"
+                           asp-area=""
+                           asp-controller="Articles"
+                           asp-action="Details"
+                           asp-route-id="@article.Id">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        @if (Model.TotalPages != 0)
+        {
+            <div class="col-lg-12 col-md-6 mb-4">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item @prevDisabled">
+                            <a class="page-link inactive" asp-action="Index" asp-route-pageNumber="@prevPage">
+                                Previous
+                            </a>
+                        </li>
+                        @for (int i = 1; i <= Model.TotalPages; i++)
+                        {
+                            var active = i == Model.PageIndex ? "active CH-color" : "inactive";
+                            <li class="page-item @active">
+                                <a class="page-link @active" asp-action="Index" asp-route-pageNumber="@i">@i</a>
+                            </li>
+                        }
+                        <li class="page-item @nextDisabled">
+                            <a class="page-link inactive" asp-action="Index" asp-route-pageNumber="@nextPage">
+                                Next
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        }
+    </div>
+
+    <partial name="_ContactsInfoPartial" />
+</div>
+<!-- End articles -->
+
+<a href="#" id="back-to-top" title="Back to top" style="display: none;">
+    <i class="fas fa-angle-double-up" aria-hidden="true"></i>
+</a>
+<a asp-controller="Home" asp-action="Chat" id="chat-btn" title="Chat" style="display: none;">
+    <i class="fas fa-comment" aria-hidden="true"></i>
+</a>

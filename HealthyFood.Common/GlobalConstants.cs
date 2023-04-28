@@ -4,6 +4,8 @@
     {
         public const string SystemName = "Healthy Food";
 
+        public const string SystemEmail = "stanislav.stoyanov369@gmail.com";
+
         public const string AdministratorRoleName = "Administrator";
 
         public const string AdministratorUsername = "Admin";

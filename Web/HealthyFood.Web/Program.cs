@@ -69,6 +69,7 @@ namespace HealthyFood.Web
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<IRecipesService, RecipesService>();
             services.AddTransient<ICloudinaryService, CloudinaryService>();
+            services.AddTransient<IContactsService, ContactsService>();
             services.AddTransient<ICategoriesService, CategoriesService>();
             services.AddTransient<IArticlesService, ArticlesService>();
             services.AddTransient<IArticleCommentsSertvice, ArticleCommentsService>();

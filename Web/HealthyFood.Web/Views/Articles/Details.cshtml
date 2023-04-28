@@ -1,0 +1,224 @@
+﻿@using HealthyFood.Models.ViewModels.Articles
+@model DetailsListingViewModel
+@{
+    this.ViewData["Title"] = "Details";
+
+    void DisplayComments(int? parentId)
+    {
+        var comments = this.Model.ArticleListingViewModel.ArticleComments
+            .Where(x => x.ParentId == parentId)
+            .ToArray();
+
+        if (comments.Length == 0)
+        {
+            return;
+        }
+
+        @foreach (var comment in comments)
+        {
+            <div class="comment-item children pb-3">
+                <div class="comment-item-left">
+                    <img id="avatar-img" src="/images/avt-img-2.jpg" alt="User image for @comment.UserUserName">
+                </div>
+                <div class="comment-item-right">
+                    <div class="pull-left">
+                        <strong>@comment.UserUserName</strong>
+                    </div>
+                    <div class="pull-right">
+                        <i class="far fa-calendar-alt" aria-hidden="true"></i><span>@comment.CreatedOn.ToLocalTime()</span>
+                    </div>
+                    <div class="des-l">
+                        <p>@Html.Raw(comment.SanitizedContent)</p>
+                    </div>
+                    @if (this.User.Identity.IsAuthenticated)
+                    {
+                        <a href="#" onclick="showAddCommentForm(@comment.Id)" class="right-btn-re">
+                            <i class="fa fa-reply" aria-hidden="true"></i> Reply
+                        </a>
+                    }
+                    @{
+                        DisplayComments(comment.Id);
+                    }
+                </div>
+            </div>
+        }
+    }
+}
+
+<!-- Start All Pages -->
+<div class="all-page-title page-breadcrumb">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Article details</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Pages -->
+
+<!-- Start article details -->
+<div class="blog-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="heading-title text-center">
+                    <h2>Article details</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-8 col-lg-8 col-12">
+                <div class="blog-inner-details-page">
+                    <div class="blog-inner-box">
+                        @if (Model.ArticleListingViewModel != null)
+                        {
+                            <div class="side-blog-img">
+                                <img class="img-fluid" src="@Model.ArticleListingViewModel.ImagePath" alt="Article Image">
+                                <div class="date-blog-up">
+                                    @Model.ArticleListingViewModel.CreatedOn.ToShortDateString()
+                                </div>
+                            </div>
+                            <div class="inner-blog-detail details-page">
+                                <h3>@Model.ArticleListingViewModel.Title</h3>
+                                <ul>
+                                    <li>
+                                        <i class="fa fa-user"></i> Posted By : <span>@Model.ArticleListingViewModel.UserUsername</span>
+                                    </li>
+                                    <li>|</li>
+                                    <li>
+                                        <i class="fa fa-calendar"></i> Date : <span>@Model.ArticleListingViewModel.CreatedOn.ToLocalTime()</span>
+                                    </li>
+                                    <li>|</li>
+                                    <li>
+                                        <i class="fa fa-list"></i> Category : <span>@Model.ArticleListingViewModel.CategoryName</span>
+                                    </li>
+                                </ul>
+                                <p>@Html.Raw(Model.ArticleListingViewModel.SanitizedDescription)</p>
+                            </div>
+                            <div class="blog-comment-box">
+                                <h3><i class="fa fa-comments" aria-hidden="true"></i> Comments (@Model.ArticleListingViewModel.ArticleComments.Count())</h3>
+                                @{
+                                    DisplayComments(null);
+                                }
+                            </div>
+                            <div class="comment-respond-box">
+                                <h3>Leave your comment </h3>
+                                <div class="comment-respond-form">
+                                    @if (this.User.Identity.IsAuthenticated)
+                                    {
+                                        <form id="AddCommentForm" class="comment-form-respond row" asp-controller="ArticleComments" asp-action="Create" method="post">
+
+                                            <input type="hidden" asp-for="@Model.CreateArticleCommentInputModel.ArticleId" value="@Model.ArticleListingViewModel.Id" />
+                                            <input type="hidden" asp-for="@Model.CreateArticleCommentInputModel.ParentId" value="0" />
+
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <textarea id="content-textarea" asp-for="@Model.CreateArticleCommentInputModel.Content" class="form-control" placeholder="Your Comment"></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <span asp-validation-for="@Model.CreateArticleCommentInputModel.Content" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <button class="btn btn-primary" type="submit">Submit comment</button>
+                                            </div>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-primary"
+                                   asp-area="Identity"
+                                   asp-page="/Account/Login"
+                                   asp-route-returnUrl="/Articles/Details/@Model.ArticleListingViewModel.Id">Login to write comment</a>
+                                    }
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                There is not any article with this title.
+                            </div>
+                            <a class="btn btn-secondary btn-sm" asp-controller="Articles" asp-action="Index" role="button">Continue to articles</a>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-8 col-12 blog-sidebar">
+                <div class="right-side-blog">
+                    <h3>Search</h3>
+                    <form asp-action="Search" method="get">
+                        <div class="blog-search-form">
+                            <input name="searchTitle" placeholder="Search by article title" type="text">
+                            <button class="search-btn" type="submit">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <h3>Categories</h3>
+                    <div class="blog-categories">
+                        <ul>
+                            @foreach (var category in Model.Categories)
+                            {
+                                <li>
+                                    <a asp-area="" asp-controller="Articles" asp-action="ByName" asp-route-categoryName="@category.Name">
+                                        <span>@category.Name</span>
+                                        <span>| @category.Articles.Count() articles</span>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <h3>Recent Articles</h3>
+                    <div class="post-box-blog">
+                        <div class="recent-post-box">
+                            @foreach (var article in Model.RecentArticles)
+                            {
+                                <div class="recent-box-blog">
+                                    <div class="recent-img">
+                                        <img id="article-size" class="img-fluid" src="@article.ImagePath" alt="Article Image">
+                                    </div>
+                                    <div class="recent-info">
+                                        <ul>
+                                            <li>
+                                                <i class="fa fa-user"></i> Posted By : <span>@article.UserUsername</span>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-calendar"></i> Date : <span>@article.CreatedOn.ToLocalTime()</span>
+                                            </li>
+                                        </ul>
+                                        <a asp-area="" asp-controller="Articles" asp-action="Details" asp-route-id="@article.Id">
+                                            <h4>@article.Title</h4>
+                                        </a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <partial name="_ContactsInfoPartial" />
+</div>
+<!-- End details -->
+
+@section Scripts
+{
+    <script type="text/javascript" src="~/js/rating.js"></script>
+
+    <script>
+        function showAddCommentForm(parentId) {
+            $("#AddCommentForm input[name='CreateArticleCommentInputModel.ParentId']").val(parentId);
+            $("#AddCommentForm").show();
+
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $("#AddCommentForm").offset().top - 200
+            }, 1000);
+        }
+    </script>
+}

@@ -1,0 +1,102 @@
+﻿@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+@model HealthyFood.Models.ViewModels.Contacts.ContactFormEntryViewModel
+@{
+    this.ViewData["Title"] = "Contact us";
+}
+
+<!-- Start All Pages -->
+<div class="all-page-title page-breadcrumb">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Contact us</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Pages -->
+
+<!-- Start Contact -->
+<div class="map-full"></div>
+<div class="contact-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="heading-title text-center">
+                    <h2>Get In Touch</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <form asp-controller="Contacts" asp-action="Index" method="post">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input asp-for="FirstName" placeholder="Enter first name" class="form-control contact-form">
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input asp-for="LastName" placeholder="Enter last name" class="form-control contact-form" />
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input asp-for="Email" class="form-control contact-form" placeholder="Enter email">
+                                <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input asp-for="Subject" placeholder="Enter subject" class="form-control contact-form" />
+                                <span asp-validation-for="Subject" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <textarea asp-for="Content" class="form-control contact-form" rows="6" placeholder="Enter content"></textarea>
+                                <span asp-validation-for="Content" class="text-danger"></span>
+                            </div>
+                            <div class="submit-button text-center">
+                                <input type="hidden" id="RecaptchaValue" name="RecaptchaValue" />
+                                <button class="btn btn-common" type="submit">Send Message</button>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End Contact -->
+@section Scripts
+{
+    <script src="~/js/jquery.mapify.js" asp-append-version="true"></script>
+    <script>
+        $('.map-full').mapify({
+            points: [
+                {
+                    lat: 42.698334,
+                    lng: 23.319941,
+                    marker: true,
+                    title: 'Marker title',
+                    infoWindow: 'Healthy Food'
+                }
+            ]
+        });
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js?render=@this.Configuration["GoogleReCaptcha:Key"]"></script>
+    <script>
+        grecaptcha.ready(function () {
+            grecaptcha.execute('@this.Configuration["GoogleReCaptcha:Key"]', { action: 'contact_form' }).then(function (token) {
+                document.getElementById("RecaptchaValue").value = token;
+            });
+        });
+    </script>
+}
