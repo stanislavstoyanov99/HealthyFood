@@ -11,7 +11,7 @@
     {
         public Category()
         {
-            this.BlogPosts = new HashSet<BlogPost>();
+            this.Articles = new HashSet<Article>();
             this.Recipes = new HashSet<Recipe>();
         }
 
@@ -23,7 +23,7 @@
         [MaxLength(DescriptionMaxLength)]
         public string Description { get; set; }
 
-        public virtual ICollection<BlogPost> BlogPosts { get; set; }
+        public virtual ICollection<Article> Articles { get; set; }
 
         public virtual ICollection<Recipe> Recipes { get; set; }
     }

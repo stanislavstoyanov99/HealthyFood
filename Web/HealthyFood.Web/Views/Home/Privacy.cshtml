@@ -1,6 +1,21 @@
-﻿@{
+﻿@using HealthyFood.Models.ViewModels.Privacy
+@model PrivacyDetailsViewModel
+@{
     this.ViewData["Title"] = "Privacy Policy";
 }
-<h1>@this.ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div class="privacy-box mt-80">
+    <div class="container">
+        <p>@Html.Raw(Model.SanitizedPageContent)</p>
+    </div>
+
+    <partial name="_ContactsInfoPartial" />
+</div>
+
+<a href="#" id="back-to-top" title="Back to top" style="display: none;">
+    <i class="fas fa-angle-double-up" aria-hidden="true"></i>
+</a>
+
+<a asp-controller="Home" asp-action="Chat" id="chat-btn" title="Chat" style="display: none;">
+    <i class="fas fa-comment" aria-hidden="true"></i>
+</a>

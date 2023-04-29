@@ -66,7 +66,8 @@ namespace HealthyFood.Web
             services.AddScoped<PasswordExpirationCheckAttribute>();
 
             // Application services
-            services.AddTransient<IEmailSender, NullMessageSender>();
+            services.AddTransient<IEmailSender>(
+                serviceProvider => new SendGridEmailSender(configuration["SendGridHealthyFood:ApiKey"]));
             services.AddTransient<IRecipesService, RecipesService>();
             services.AddTransient<ICloudinaryService, CloudinaryService>();
             services.AddTransient<IContactsService, ContactsService>();

@@ -40,18 +40,6 @@
             public const int ContentMaxLength = 300;
         }
 
-        public static class BlogPostValidation
-        {
-            public const int TitleMaxLength = 50;
-            public const int DescriptionMaxLength = 10000;
-            public const int ImagePathMaxLength = 1000;
-        }
-
-        public static class BlogPostCommentValidation
-        {
-            public const int ContentMaxLength = 300;
-        }
-
         public static class RecipeValidation
         {
             public const int NameMaxLength = 30;

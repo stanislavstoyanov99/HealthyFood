@@ -22,8 +22,6 @@ namespace HealthyFood.Data.Models
 
             this.Articles = new HashSet<Article>();
             this.ArticleComments = new HashSet<ArticleComment>();
-            this.BlogPosts = new HashSet<BlogPost>();
-            this.BlogPostComments = new HashSet<BlogPostComment>();
             this.Recipes = new HashSet<Recipe>();
             this.Reviews = new HashSet<Review>();
             this.ReviewComments = new HashSet<ReviewComment>();
@@ -57,10 +55,6 @@ namespace HealthyFood.Data.Models
         public virtual ICollection<Article> Articles { get; set; }
 
         public virtual ICollection<ArticleComment> ArticleComments { get; set; }
-
-        public virtual ICollection<BlogPost> BlogPosts { get; set; }
-
-        public virtual ICollection<BlogPostComment> BlogPostComments { get; set; }
 
         public virtual ICollection<Recipe> Recipes { get; set; }
 
