@@ -2,6 +2,7 @@
 @model HealthyFood.Models.ViewModels.Recipes.RecipeDetailsPageViewModel
 @{
     this.ViewData["Title"] = $"{Model.Recipe.Name}";
+    var userReview = Model.Recipe.Reviews.FirstOrDefault(x => x.UserId == Model.Recipe.UserId);
 }
 
 <div class="main-body mt-80 conteiner-fluid">
@@ -61,16 +62,143 @@
         </div>
         <div class="recipeReviews">
             <h2 class="centered"><strong>Reviews:</strong></h2>
-            <div class="alert alert-danger" role="alert">
-                There are not any reviews for this recipe yet!
-            </div>
+            @if (Model.Recipe.Reviews.Count() != 0)
+            {
+                <div class="row reviewsPanel">
+                    @foreach (var review in Model.Recipe.Reviews)
+                    {
+                        <div class="col-12 col-lg-4 review-card ">
+                            <div class="review-header">
+                                <span>Author: @review.UserUsername</span><br>
+                                <span><i class="fa fa-calendar-alt"></i> @review.CreatedOn.ToLocalTime()</span><br>
+                                <span>
+                                    Rate:
+                                    @for (int i = 0; i < review.Rate; i++)
+                                    {
+                                        <i class="fas fa-star star"></i>
+                                    }
+                                </span>
+                            </div>
+                            <div class="review-body">
+                                <span><b>@review.Title</b></span><br>
+                                <span>@review.Description</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-danger" role="alert">
+                    There are not any reviews for this recipe yet!
+                </div>
+            }
             <div class="row" style="padding: 0 50px 0 50px;">
                 @if (!this.User.Identity.IsAuthenticated)
                 {
                     <a asp-area="Identity"
-                       asp-page="/Account/Login"
-                       asp-route-returnUrl="/Recipes/Details/@Model.Recipe.Id"
-                       class="btn btn-CH ml-auto">Sign in to create a review</a>
+                    asp-page="/Account/Login"
+                    asp-route-returnUrl="/Recipes/Details/@Model.Recipe.Id"
+                    class="btn btn-CH ml-auto">Sign in to create a review
+                    </a>
+                }
+                else if (!Model.Recipe.Reviews.Where(x => x.UserId == Model.Recipe.UserId).Any())
+                {
+                    <button type="button" class="btn btn-CH ml-auto" data-toggle="modal" data-target="#reviewsModal">
+                        Create Review
+                    </button>
+                }
+                else
+                {
+                    <button type="button" class="btn btn-CH ml-auto" data-toggle="modal" data-target="#existingReviewModal">
+                        You have already created review!
+                    </button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<!--Create view Modal-->
+<div class="modal fade" id="reviewsModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header CH-color">
+                <h5 class="modal-title CH-color">Give Us your opinion!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="submit-form" asp-controller="Reviews" asp-action="Create" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <span>Review for : @Model.Recipe.Name</span> <br>
+                        <label for="Title">Title</label>
+                        <input id="title" asp-for="@Model.CreateReviewInputModel.Title" />
+                        <div class="form-group">
+                            <span asp-validation-for="@Model.CreateReviewInputModel.Title" class="text-danger"></span>
+                        </div>
+                        <input type="hidden" asp-for="@Model.CreateReviewInputModel.RecipeId" value="@Model.Recipe.Id" />
+                        <div class="container">
+                            <div class="starrating d-flex justify-content-center flex-row-reverse">
+                                <input type="radio" id="star5" asp-for="@Model.CreateReviewInputModel.Rate" value="5" />
+                                <label for="star5" title="5 star"></label>
+                                <input type="radio" id="star4" asp-for="@Model.CreateReviewInputModel.Rate" value="4" />
+                                <label for="star4" title="4 star"></label>
+                                <input type="radio" id="star3" asp-for="@Model.CreateReviewInputModel.Rate" value="3" />
+                                <label for="star3" title="3 star"></label>
+                                <input type="radio" id="star2" asp-for="@Model.CreateReviewInputModel.Rate" value="2" />
+                                <label for="star2" title="2 star"></label>
+                                <input type="radio" id="star1" asp-for="@Model.CreateReviewInputModel.Rate" value="1" />
+                                <label for="star1" title="1 star"></label>
+                            </div>
+                        </div>
+                        <label class="col-form-label" for="reviewDescription">Description:</label><br>
+                        <textarea id="reviewDescription" asp-for="@Model.CreateReviewInputModel.Content"></textarea>
+                        <div class="form-group">
+                            <span asp-validation-for="@Model.CreateReviewInputModel.Content" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer flex-row-reverse justify-content-md-start w-100">
+                    <button id="submit-btn" type="submit" class="btn btn-CH">Send Review</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--Delete view Modal-->
+<div class="modal fade" id="existingReviewModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header CH-color">
+                <h5 class="modal-title CH-color">Your review</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @if (userReview != null)
+                {
+                    <div>
+                        <b>@userReview.Title</b>
+                    </div>
+                    <div>
+                        @userReview.Description
+                    </div>
+                    <div>
+                        <span>
+                            @for (int j = 0; j < userReview.Rate; j++)
+                            {
+                                <i class="fas fa-star star"></i>
+                            }
+                        </span>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer flex-row-reverse justify-content-md-start w-100">
+                @if (userReview != null)
+                {
+                    <a asp-route-reviewId="@userReview.Id" asp-route-recipeId="@userReview.RecipeId" asp-controller="Reviews" asp-action="Remove" type="button" class="btn btn-CH">Delete Review</a>
                 }
             </div>
         </div>

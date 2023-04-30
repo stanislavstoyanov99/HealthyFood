@@ -1,6 +1,23 @@
 ﻿let ctxL = document.getElementById("lineChart").getContext('2d');
 let ctxt = document.getElementById("RecipesnArticlesChar").getContext('2d');
 
+$(document).ready(function () {
+    $.ajax({
+        url: '/api/statistics',
+        type: 'GET',
+        dataType: "json",
+        success: function (data) {
+            myLineChart.data.datasets[1].data = data.registeredUsers;
+            myDoughnutChart.data.datasets[0].data = [data.articlesCount, data.recipesCount, 0, 0];
+            myDoughnutChart.data.datasets[1].data = [0, 0, data.commentsCount, data.reviewsCount];
+
+            myLineChart.update();
+            myDoughnutChart.update();
+
+        }
+    })
+});
+
 let myLineChart = new Chart(ctxL, {
     type: 'line',
     data: {
@@ -31,7 +48,7 @@ let myLineChart = new Chart(ctxL, {
 let myDoughnutChart = new Chart(ctxt, {
     type: 'pie',
     data: {
-        labels: ["Articles", "Recipes", "Reviews"],
+        labels: ["Articles", "Recipes", "Article Comments", "Reviews"],
         datasets: [{
 
             data: [0, 0, 0, 0],
@@ -67,6 +84,15 @@ $(document).ready(function () {
         success: function (data) {
             $('#topRecipes').append(`<div class="br-b-white p-3">Top Recipes</div>`);
             data.forEach(el => $('#topRecipes').append(`<div class="pt-3 sm">` + el.key + " - " + el.rate + ` <i class="fas fa-star star"></i></div>`));
+        }
+    });
+    $.ajax({
+        type: 'GET',
+        data: { type: "Articles" },
+        url: '/Administration/Dashboard/FetchTopFive',
+        success: function (data) {
+            $('#topComentedArticle').append(`<div class="br-b-white p-3">Top Commented Ariticles</div>`);
+            data.forEach(el => $('#topComentedArticle').append(`<div class="pt-3 sm">` + el.key + " - " + el.count + ` Comments</div>`));
         }
     });
 });

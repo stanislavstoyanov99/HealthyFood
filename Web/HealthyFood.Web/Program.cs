@@ -1,5 +1,6 @@
 namespace HealthyFood.Web
 {
+    using System.Net;
     using System.Reflection;
 
     using CloudinaryDotNet;
@@ -77,6 +78,7 @@ namespace HealthyFood.Web
             services.AddTransient<IFaqService, FaqService>();
             services.AddTransient<IApplicationUsersService, ApplicationUsersService>();
             services.AddTransient<IPrivacyService, PrivacyService>();
+            services.AddTransient<IReviewsService, ReviewsService>();
 
             // External login providers
             services.AddAuthentication()
@@ -132,6 +134,7 @@ namespace HealthyFood.Web
 
             app.MapControllerRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
             app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+            app.MapControllerRoute("subscription", "{controller=Home}/{action=ThankYouSubscription}/{email?}");
             app.MapRazorPages();
         }
     }

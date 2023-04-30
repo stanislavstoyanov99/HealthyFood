@@ -14,23 +14,23 @@
         private readonly IDeletableEntityRepository<Recipe> recipesRepository;
         private readonly IDeletableEntityRepository<Article> articlesRepository;
         private readonly IDeletableEntityRepository<Review> reviewsRepository;
-        private readonly IDeletableEntityRepository<ArticleComment> articleCommentRepository;
-        private readonly IDeletableEntityRepository<Category> categoryRepository;
+        private readonly IDeletableEntityRepository<ArticleComment> articleCommentsRepository;
+        private readonly IDeletableEntityRepository<Category> categoriesRepository;
 
         public DashboardController(
             IDeletableEntityRepository<ApplicationUser> usersRepository,
             IDeletableEntityRepository<Recipe> recipesRepository,
             IDeletableEntityRepository<Article> articlesRepository,
             IDeletableEntityRepository<Review> reviewsRepository,
-            IDeletableEntityRepository<ArticleComment> articleCommentRepository,
-            IDeletableEntityRepository<Category> categoryRepository)
+            IDeletableEntityRepository<ArticleComment> articleCommentsRepository,
+            IDeletableEntityRepository<Category> categoriesRepository)
         {
             this.usersRepository = usersRepository;
             this.recipesRepository = recipesRepository;
             this.articlesRepository = articlesRepository;
             this.reviewsRepository = reviewsRepository;
-            this.articleCommentRepository = articleCommentRepository;
-            this.categoryRepository = categoryRepository;
+            this.articleCommentsRepository = articleCommentsRepository;
+            this.categoriesRepository = categoriesRepository;
         }
 
         public IActionResult Index()
@@ -42,8 +42,8 @@
                 ReviewsCount = this.reviewsRepository.All().Count(),
                 RegisteredUsers = this.usersRepository.All().Count(),
                 Admins = this.usersRepository.All().Count(x => x.UserName == GlobalConstants.AdministratorUsername),
-                ArticleCommentsCount = this.articleCommentRepository.All().Count(),
-                CategoriesCount = this.categoryRepository.All().Count(),
+                ArticleCommentsCount = this.articleCommentsRepository.All().Count(),
+                CategoriesCount = this.categoriesRepository.All().Count(),
             };
 
             return this.View(statistics);

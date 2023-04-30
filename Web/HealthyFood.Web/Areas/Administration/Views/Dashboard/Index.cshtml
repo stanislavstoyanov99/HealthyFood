@@ -3,7 +3,6 @@
 
     var recipesCount = Model.RecipesCount;
     var articleCount = Model.ArticlesCount;
-
 }
 
 <div class="container pl-3 centered">
@@ -19,8 +18,6 @@
         <div class="col bg-white">
             <h3 class="centered mt-5">Healthy Food System Users</h3>
             <ul id="UsersNow" class="centered">
-                <li>Daily Users</li>
-                <li>*Functionality not implemented</li>
                 <li>Registered Users:</li>
                 <li><b>@Model.RegisteredUsers</b></li>
                 <li>Admins</li>
@@ -38,8 +35,11 @@
                     </div>
                 </div>
                 <div class="col-12 col-lg-5 p-0 h-100 flex-grow-1 br-l-r-white">
-                    <div class=""  id="topRecipes">
-
+                    <div class="" id="topRecipes">
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4 p-0 h-100 flex-grow-1 ">
+                    <div class="" id="topComentedArticle">
                     </div>
                 </div>
             </div>
@@ -47,10 +47,7 @@
         <div class="col-12 col-lg-5 statistic-card shadow p-3 mb-5 mt-3 bg-white rounded" style="padding-right:10px;">
             <h3 class="centered">Healthy Food Main Content</h3>
             <div class="container">
-                <p style="text-align:center">Recipes Count:
-                    <strong class="recipe-sec">@recipesCount</strong> | Articles Count: 
-                    <strong class="article-sec">@articleCount</strong>
-                </p>
+                <p style="text-align:center">Recipes Count: <strong class="recipe-sec">@recipesCount</strong> | Articles Count: <strong class="article-sec">@articleCount</strong> </p>
             </div>
             <div class="conteiner chart-card" name="RecipesStatistic">
                 <canvas class="centered" id="RecipesnArticlesChar"></canvas>

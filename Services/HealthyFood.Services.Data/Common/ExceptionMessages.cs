@@ -31,5 +31,11 @@
         public const string PrivacyNotFound = "Privacy with id {0} is not found.";
 
         public const string PrivacyViewModelNotFound = "Privacy view model is not found.";
+
+        public const string ReviewAlreadyExists = "Review with id {0} already exists.";
+
+        public const string ReviewsNotFound = "No Reviews yet!";
+
+        public const string ReviewNotFound = "Review with id {0} is not found.";
     }
 }

@@ -2,11 +2,13 @@
 {
     using Ganss.Xss;
     using System.ComponentModel.DataAnnotations;
+    using System.Collections.Generic;
 
     using HealthyFood.Data.Models;
     using HealthyFood.Data.Models.Enumerations;
     using HealthyFood.Models.ViewModels.Categories;
     using HealthyFood.Services.Mapping;
+    using HealthyFood.Models.ViewModels.Reviews;
 
     using static HealthyFood.Models.Common.ModelValidation;
     using static HealthyFood.Models.Common.ModelValidation.RecipeValidation;
@@ -62,6 +64,6 @@
 
         public string UserId { get; set; }
 
-        // public IEnumerable<ReviewDetailsViewModel> Reviews { get; set; }
+        public IEnumerable<ReviewDetailsViewModel> Reviews { get; set; }
     }
 }
