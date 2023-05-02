@@ -362,7 +362,7 @@ button:focus {
 }
 
     .about-section-box .img-fluid {
-        box-shadow: 20px 20px 0px #540404;
+        box-shadow: 20px 20px 0px #222634;
     }
 
 .inner-column {
@@ -643,7 +643,7 @@ button:focus {
 -------------------------------------------------------------------*/
 
 .contact-imfo-box {
-    background: #540404;
+    background: #222634;
     padding: 30px 0;
     border-radius: 100px;
 }
@@ -660,7 +660,7 @@ button:focus {
     line-height: 60px;
     text-align: center;
     background: #fff;
-    color: #540404;
+    color: #FEA116;
     font-size: 30px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -1558,8 +1558,8 @@ blockquote {
     height: 40px;
     text-align: center;
     line-height: 40px;
-    background: #540404;
-    color: #ffffff;
+    background: #FEA116;
+    color: #222634;
     cursor: pointer;
     border: 0;
     border-radius: 2px;
@@ -1577,8 +1577,8 @@ blockquote {
     height: 40px;
     text-align: center;
     line-height: 40px;
-    background: #540404;
-    color: #ffffff;
+    background: #FEA116;
+    color: #222634;
     cursor: pointer;
     border: 0;
     border-radius: 2px;
@@ -1587,18 +1587,22 @@ blockquote {
     font-size: 30px;
 }
 
-.preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    background-image: url('../images/preloader.gif');
-    background-repeat: no-repeat;
-    background-color: #FFF;
-    background-position: center;
+#back-to-top:hover, #chat-btn:hover {
+    scale: 1.1;
 }
+
+    .preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background-image: url('../images/preloader.gif');
+        background-repeat: no-repeat;
+        background-color: #FFF;
+        background-position: center;
+    }
 
 .privacy-box {
     padding: 20px;
@@ -1871,6 +1875,39 @@ main > .acount-manage > .container.mt-80.mb-3 {
 
 #DashboardCon .row .row .col-md-9 button {
     margin-bottom: 1rem;
+}
+
+/*------------------------------------------------------------------
+    Main
+-------------------------------------------------------------------*/
+
+.sub {
+    color: #222222 !important;
+}
+
+.container .contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .container .contact a {
+        color: #FEA116;
+    }
+
+        .container .contact a:hover {
+            background: #FEA116;
+            color: #222634;
+        }
+
+.conteiner-fluid a:hover {
+    color: #FEA116 !important;
+}
+
+.article-button-container {
+    width: 100% !important;
+    justify-content: center;
+    align-items: center;
 }
 
 /*------------------------------------------------------------------

@@ -45,7 +45,7 @@
             <div class="col-lg-6 col-md-6 col-sm-12 text-center">
                 <div class="inner-column">
                     <h1>Healthy Food</h1>
-                    <h4>Website created for all you home chefs out there!</h4>
+                    <h4 class="sub">Website created for all you home chefs out there!</h4>
                     <p class="mt-4">Healthy Food is an online community webside created for browsing recipes and articles about healty lifestyle!</p>
                     <p>Our goal is to make the Internet a user-friendly place for people who want to find fresh ideas for homemade food!</p>
                 </div>
@@ -135,7 +135,7 @@
                 <p>If you are not hungry, feel free to browse our article section</p>
             </div>
         </div>
-        <div class="row d-flex h-100  ml-auto mr-auto">
+        <div class="row d-flex h-100  ml-auto mr-auto article-button-container">
             @foreach (var article in Model.RecentArticles)
             {
                 <div class="col-12 col-md-4 ">
@@ -166,7 +166,7 @@
                 </div>
             }
             <div class="col-12 col-md-4 toArticle-box ">
-                <a class="button" id="toArticleBtn" asp-area="" asp-controller="Articles" asp-action="Index"><span>To Articles</span></a>
+                <a class="button" id="toArticleBtn" asp-area="" asp-controller="Articles" asp-action="Index"><span>TO ARTICLES</span></a>
             </div>
         </div>
 
