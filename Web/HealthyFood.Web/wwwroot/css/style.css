@@ -1618,6 +1618,7 @@ blockquote {
 .alert-info {
     background-color: #222634;
     color: white;
+    margin-top: 3rem;
 }
 
 .alert-info a {
@@ -1828,14 +1829,22 @@ main > .acount-manage > .container.mt-80.mb-3 {
         border-color: #FEA116 !important;
     }
 
-        #DashboardCon .row .row .col-12:first-child {
+        /*#DashboardCon .row .row .col-12:first-child {
             flex-basis: 57.5%;
             margin-right: 0.5rem;
-        }
+        }*/
 
-    #DashboardCon .row .row .centered {
-        margin-bottom: 0.5rem;
-    }
+#DashboardCon .statistic-card:first-child {
+    margin-bottom: 1rem !important;
+}
+
+#DashboardCon .statistic-card:last-child {
+    margin-bottom: 1rem !important;
+}
+
+#DashboardCon .row .row .centered {
+    margin-bottom: 0.5rem;
+}
 
 .container-fluid.nav-bug.no-padding {
     border-bottom: 1px solid #FEA116;
@@ -1900,16 +1909,55 @@ main > .acount-manage > .container.mt-80.mb-3 {
             color: #222634;
         }
 
-.conteiner-fluid a:hover {
+.conteiner-fluid .homeinfo a {
     color: #FEA116 !important;
 }
 
-.article-button-container {
-    width: 100% !important;
-    justify-content: center;
-    align-items: center;
+.conteiner-fluid .homeinfo a:hover {
+    background-color: #FEA116 !important;
+    color: #222634 !important;
+    border: none;
 }
 
+.article-button-container a {
+    background: white !important;
+    color: #FEA116 !important;
+}
+
+    .article-button-container a:hover {
+        background: #FEA116 !important;
+        color: #222634 !important;
+    }
+
+.navbar-light .navbar-toggler {
+    border-color: #FEA116 !important;
+    border-radius: 0.3rem !important;
+}
+
+.navbar-light .navbar-toggler:hover {
+    background-color: transparent !important;
+    border: 2px solid;
+}
+
+.navbar-light .navbar-toggler-icon {
+    background-image: url(/images/icon-menu.png) !important;
+}
+
+.menu-box .conteiner-fluid a:hover {
+    color: #FEA116 !important;
+}
+
+.menu-box .recepie {
+    width: 230px;
+}
+
+.menu-box .recepie.col-9 {
+    flex: 0 0 0% !important;
+}
+
+/*------------------------------------------------------------------
+    Page
+-------------------------------------------------------------------*/
 /*------------------------------------------------------------------
     Error
 -------------------------------------------------------------------*/
