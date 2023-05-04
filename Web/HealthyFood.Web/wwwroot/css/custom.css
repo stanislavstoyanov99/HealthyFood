@@ -70,10 +70,10 @@
     margin-top: 12px;
 }
 
-    .btn-CH:hover {
-        background-color: #FEA116;
-        color: #222634;
-    }
+.recipeReviews .btn-CH:hover {
+    background-color: #FEA116;
+    color: #222634 !important;
+}
 
 #admin-btn {
     color: white;
@@ -696,9 +696,9 @@
     color: white !important;
 }
 
-.modal-dialog #submit-btn:hover, .btn:hover {
-    color: #FEA116 !important;
-}
+    .modal-dialog #submit-btn:hover, .modal-dialog .btn:hover {
+        color: #FEA116 !important;
+    }
 
 .starrating label {
     cursor: pointer;
