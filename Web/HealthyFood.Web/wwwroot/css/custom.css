@@ -546,8 +546,11 @@
 #content-textarea {
     border: 2px solid;
     border-radius: 25px;
-    border-color: #540404;
 }
+
+    #content-textarea:focus-visible {
+        border-color: #FEA116;
+    }
 
 .inactive {
     color: black !important;

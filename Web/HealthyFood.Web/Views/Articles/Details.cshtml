@@ -176,9 +176,9 @@
                         <div class="recent-post-box">
                             @foreach (var article in Model.RecentArticles)
                             {
-                                <div class="recent-box-blog">
+                                <div class="recent-box-blog" >
                                     <div class="recent-img">
-                                        <img id="article-size" class="img-fluid" src="@article.ImagePath" alt="Article Image">
+                                        <img id="article-size" class="img-fluid" src="@article.ImagePath" alt="Article Image" href="@article.Id">
                                     </div>
                                     <div class="recent-info">
                                         <ul>

@@ -105,11 +105,11 @@ a,
 .btn {
     text-decoration: none !important;
     outline: none !important;
-    -webkit-transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    -ms-transition: all .3s ease-in-out;
-    -o-transition: all .3s ease-in-out;
-    transition: all .3s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
 }
 
 .btn-custom {
@@ -308,15 +308,15 @@ button:focus {
 }
 
 .btn-outline-new-white {
-    color: #fff;
-    background-color: #540404;
+    color: #FEA116 !important;
+    background-color: white;
     background-image: none;
     border-color: #540404;
 }
 
     .btn-outline-new-white:hover {
-        color: #ffffff;
-        background-color: #333333;
+        color: #222634 !important;
+        background-color: #FEA116;
         border-color: #333333;
     }
 
@@ -711,7 +711,7 @@ button:focus {
 }
 
 .col-lg-6, .col-md-6 {
-    padding: 0 30px !important;
+    padding: 0 5px !important;
 }
 
 
@@ -1133,12 +1133,13 @@ button:focus {
         width: 100%;
         margin-bottom: 30px;
         color:black;
+        overflow: hidden;
     }
 
 .blog-detail h4 {
     font-size: 18px;
     font-weight: 500;
-    color: #222222;
+    color: #222634 !important;
 }
 
 .blog-detail ul li {
@@ -1147,12 +1148,13 @@ button:focus {
 }
 
     .blog-detail ul li span {
-        color: #540404;
+        color: #222634;
         cursor: pointer;
     }
 
         .blog-detail ul li span:hover {
-            color: #010101;
+            color: #FEA116;
+            font-weight: bold;
         }
 
     .blog-detail ul li:first-child {
@@ -1163,6 +1165,7 @@ button:focus {
     padding: 10px 0px 0 0;
     margin: 0px;
     font-size: 13px;
+    word-wrap: break-word;
 }
 
 .blog-detail a {
@@ -1171,7 +1174,14 @@ button:focus {
 }
 
 .blog-box-inner .blog-detail:hover {
-    background: rgba(255, 255, 255, .9);
+    background: rgba(255, 255, 255, .7);
+}
+
+.article-button-container {
+    justify-content: space-evenly!important;
+}
+
+.col-md-4 {
 }
 
 .blog-inner-box {
@@ -1181,7 +1191,7 @@ button:focus {
 }
 
 .side-blog-img {
-    box-shadow: 15px 15px 0px 0px rgba(214, 81, 6, 0.4);
+    box-shadow: 15px 15px 0px 0px rgba(34, 38, 52, 0.9);
     -webkit-transition: all 1s ease 0.01s;
     transition: all 1s ease 0.01s;
     position: relative;
@@ -1191,7 +1201,7 @@ button:focus {
     position: absolute;
     right: 0px;
     top: 0px;
-    background: #540404;
+    background: #222634;
     font-size: 18px;
     color: #ffffff;
     padding: 5px 15px 5px 5px;
@@ -1216,7 +1226,7 @@ button:focus {
     }
 
         .inner-blog-detail ul li span {
-            color: #540404;
+            color: #FEA116;
         }
 
     .inner-blog-detail p {
@@ -1363,8 +1373,8 @@ blockquote {
 }
 
     .right-btn-re:hover {
-        background: #540404;
-        color: #ffffff !important;
+        background: #222634;
+        color: #FEA116 !important;
     }
 
 .comment-respond-box {
@@ -1429,21 +1439,26 @@ blockquote {
     .blog-search-form input {
         width: 100%;
         min-height: 40px;
-        border: 1px solid rgba(214, 81, 6, 0.4);
+        border: 1px solid #222634;
         padding: 5px 40px 5px 10px;
         font-size: 15px;
         color: #222222;
     }
 
-    .blog-search-form .search-btn {
-        position: absolute;
-        right: 0px;
-        background: none;
-        border: none;
-        font-size: 20px;
-        min-height: 40px;
-        padding: 0px 15px;
-    }
+        .blog-search-form input:focus-visible {
+            border-color: #FEA116 !important;
+            outline-color: #FEA116 !important;
+        }
+
+.blog-search-form .search-btn {
+    position: absolute;
+    right: 0px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    min-height: 40px;
+    padding: 0px 15px;
+}
 
 .right-side-blog h3 {
     font-weight: 500;
@@ -1469,7 +1484,8 @@ blockquote {
         }
 
             .blog-categories ul li a:hover {
-                color: #540404;
+                color: #FEA116;
+                font-weight: bold;
             }
 
 .recent-box-blog {
@@ -1490,8 +1506,8 @@ blockquote {
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: #d65106;
-        opacity: 0.4;
+        background-color: #FEA116;
+        opacity: 0.6;
         transform: scale(0);
         -webkit-transform: scale(0);
         -moz-transform: scale(0);
@@ -1911,6 +1927,11 @@ main > .acount-manage > .container.mt-80.mb-3 {
 #DashboardCon .col-md-6 {
     margin-bottom: 1rem;
 }
+
+#DashboardCon table td {
+    /*display: inline-grid;*/
+}
+
 /*------------------------------------------------------------------
     Main
 -------------------------------------------------------------------*/
@@ -1941,6 +1962,14 @@ main > .acount-manage > .container.mt-80.mb-3 {
     background-color: #FEA116 !important;
     color: #222634 !important;
     border: none;
+}
+
+.article-button {
+    margin: 1rem 0 0 0;
+}
+
+.article-button-container {
+    padding: 0 1rem !important;
 }
 
 .article-button-container a {
@@ -2014,6 +2043,23 @@ main > .acount-manage > .container.mt-80.mb-3 {
         scale: 1.1;
     }
 
+.article-button {
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+
+    .article-button .btn {
+        background-color: white;
+        color: #FEA116;
+    }
+
+        .article-button .btn:hover {
+            background-color: #FEA116;
+            color: #222634;
+            border-color: #FEA116;
+        }
+
 /*------------------------------------------------------------------
     Recepies
 -------------------------------------------------------------------*/
@@ -2023,6 +2069,37 @@ main > .acount-manage > .container.mt-80.mb-3 {
 
 .inner-menu-box .nav-pills .nav-link:hover {
     background-color: #222634 !important;
+    color: #FEA116 !important;
+}
+
+/*------------------------------------------------------------------
+    Articles
+-------------------------------------------------------------------*/
+
+/*.blog-box .col-lg-6, .col-md-6 {
+    padding: 0 !important;
+}*/
+
+.blog-box .col-lg-12.col-md-6.mb-4 {
+    margin-top: 1.5rem;
+}
+
+.comment-respond-box button {
+    background-color: #222634 !important;
+    color: white !important;
+}
+
+    .comment-respond-box button:hover {
+        background-color: #222634 !important;
+        color: #FEA116 !important;
+        border-color: #222634 !important;
+    }
+
+.recent-box-blog .container.mt-80.mb-3 h2, h4 {
+    color: #222634 !important;
+}
+
+.recent-box-blog a:hover h4 {
     color: #FEA116 !important;
 }
 
