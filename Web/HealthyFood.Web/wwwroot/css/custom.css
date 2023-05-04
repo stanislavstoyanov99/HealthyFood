@@ -12,10 +12,18 @@
 }
 
 .CH-color {
-    background-color: #540404 !important;
-    color: white;
-    border-color: darkgrey !important;
+    background-color: #222634 !important;
+    border: none !important;
 }
+
+    .CH-color:hover {
+        color: #FEA116 !important;
+    }
+
+    .page-item.active .page-link {
+        background-color: transparent !important;
+        border-color: transparent !important;
+    }
 
 .main-body {
     padding-left: 50px;
@@ -57,10 +65,15 @@
 }
 
 .btn-CH {
-    background-color: #540404;
-    color: white;
+    background-color: white;
+    color: #FEA116;
     margin-top: 12px;
 }
+
+    .btn-CH:hover {
+        background-color: #FEA116;
+        color: #222634;
+    }
 
 #admin-btn {
     color: white;
@@ -79,11 +92,6 @@
     background-color: #222634;
     padding: 0.5rem 0.5rem !important;
     top: 95% !important;
-}
-
-.btn-CH:hover {
-    background-color: grey;
-    color: white;
 }
 
 .statistic-card {
@@ -179,8 +187,9 @@
 }
 
 .bg-userList {
-    background-image: url('../images/about-bg.jpg');
+    /*background-image: url('../images/about-bg.jpg');*/
     background-size: cover;
+    margin-bottom: 3rem;
 }
 
 .carousel-inner img {
@@ -291,8 +300,8 @@
 }
 
 .gallery-bg {
-    background-image: url('../images/body-bg.jpg');
-    background-size: cover;
+   /* background-image: url('../images/body-bg.jpg');
+    background-size: cover;*/
     color: white;
     padding: 20px;
 }
@@ -302,7 +311,6 @@
     }
 
 #recipeHeading {
-    background-color: #540404;
     color: white;
     padding: 4px;
     margin-top: 10px;
@@ -315,7 +323,6 @@
 
 #recipeBody {
     padding: 4px;
-    border: 4px solid #540404;
 }
 
 .recipeText {
@@ -332,21 +339,20 @@
     margin-left: -6px;
     margin-right: -6px;
     margin-bottom: 10px;
-    background-color: #540404;
     overflow: visible;
 }
 
 .recipeDetailsPage {
-    border: 8px outset #540404;
+    /*border: 4px solid #222634;*/
     padding: 12px;
-    background-image: url('../images/about-bg.jpg');
+    /*background-image: url('../images/about-bg.jpg');*/
     background-size: cover;
-    margin-bottom : 3px;
+    margin-bottom: 3rem;
+    border-radius: 0.3rem;
 }
 
 .recipeProperty {
     text-align: center;
-    border: 3px solid grey;
     border-radius: 12px;
     font-size: 16px;
     padding-top: 3px;
@@ -356,10 +362,6 @@
     min-width: 150px;
     background-color: white;
     color: black;
-}
-
-.recipeReviews {
-    margin-top: 30px;
 }
 
 .recipeIngredients {
@@ -389,16 +391,24 @@
 }
 
 .recipeReviews {
-    border-top: 4px dashed #540404;
     padding: 26px;
+    background-color: #222634;
+    border-radius: 0.6rem;
+    border-top: 12px double white;
+    border-top-left-radius: 0rem;
+    border-top-right-radius: 0rem;
 }
 
-.reviewsPanel {
-    min-height: 100px;
-    overflow: visible;
-    padding-left: 30px;
-    padding-right: 30px;
-}
+    .recipeReviews h2 {
+        color: white;   
+    }
+
+    .reviewsPanel {
+        min-height: 100px;
+        overflow: visible;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
 
 #reviewDescription {
     width: 100%;
@@ -441,19 +451,22 @@
 }
 
 .review-header {
-    background-color: #540404;
-    color: white;
-    border: 3px solid #540404;
+    background-color: white;
+    color: #222634;
+    border: 3px solid white;
     padding: 3px 3px;
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
 }
 
 .review-body {
-    border: 3px dashed #540404;
+    border: 3px solid white;
     border-top: none !important;
-    padding: 3px 3px;
+    padding: 7px 7px;
     min-height: 100px;
+    color: white;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
 }
 
 .category-breadcrumb {
@@ -662,3 +675,61 @@
         width: 200px !important;
     }
 }
+
+.modal-title.CH-color {
+    color: #FEA116 !important;
+    font-weight: bold;
+}
+
+.close {
+    color: #FEA116 !important;
+    opacity: 1 !important;
+}
+
+.modal-dialog #submit-btn {
+    background-color: #222634 !important;
+    color: white !important;
+}
+
+.modal-dialog .btn {
+    background-color: #222634 !important;
+    color: white !important;
+}
+
+.modal-dialog #submit-btn:hover, .btn:hover {
+    color: #FEA116 !important;
+}
+
+.starrating label {
+    cursor: pointer;
+}
+
+.modal-dialog input:focus-visible {
+    accent-color: #FEA116;
+}
+
+.modal-dialog input:focus-visible {
+    border-color: #FEA116;
+    outline-color: #FEA116;
+}
+
+.modal-dialog textarea:focus-visible {
+    border-color: #FEA116;
+    outline-color: #FEA116;
+}
+
+.collapse .card-body {
+    color: #222634 !important;
+}
+
+    .collapse .card-body .row > div {
+        border: 3px solid #222634 !important;
+    }
+
+    .collapse .card-body .row > div.col-12 {
+        border: 0px solid #222634 !important;
+    }
+
+    .collapse .card-body .text-light {
+        color: #222634 !important;
+    }

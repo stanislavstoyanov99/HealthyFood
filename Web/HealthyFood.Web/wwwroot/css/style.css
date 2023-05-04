@@ -357,7 +357,7 @@ button:focus {
 
 .about-section-box {
     padding: 70px 0px;
-    background: #ffffff url(../images/about-bg.jpg) no-repeat bottom center;
+    /*background: #ffffff url(../images/about-bg.jpg) no-repeat bottom center;*/
     background-size: cover;
 }
 
@@ -488,24 +488,35 @@ button:focus {
     bottom: -100%;
     right: 0;
     height: 100%;
-    background-color: darkgrey;
+    background-color: #222634;
     opacity: 0.9;
     padding: 12px 12px;
     -webkit-transition: all .3s ease;
     transition: all .3s ease;
 }
 
-    .why-text h4 {
-        color: #ffffff;
-        font-size: 16px;
-        font-weight: 500;
-        font-family: 'Rubik', sans-serif;
+.why-text a {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+    .why-text span {
+        display: block;
+        margin-bottom: 1rem;
+        color: #FEA116;
     }
+
+.why-text h4 {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Rubik', sans-serif;
+}
 
     .why-text p {
         color: #ffffff;
         font-size: 13px;
-        border-bottom: 1px dashed #010101;
+        border-bottom: 1px solid #FEA116;
         margin: 0px;
         padding-bottom: 15px;
         margin-top: 0px;
@@ -1951,13 +1962,57 @@ main > .acount-manage > .container.mt-80.mb-3 {
     width: 230px;
 }
 
-.menu-box .recepie.col-9 {
-    flex: 0 0 0% !important;
+.menu-box .conteiner-fluid {
+    display: flex;
+    justify-content:center;
 }
 
+.menu-box .conteiner-fluid .btn {
+    flex-basis:10%;
+}
+
+.contact-imfo-box {
+    margin-top:5rem !important;
+}
+
+.carousel-inner {
+    padding: 0 5rem;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    background-color: #222634 !important; 
+    color:white;;
+    opacity: 1 !important
+}
+
+    .carousel-control-next span {
+        margin-left: 25px !important;   
+    }
+
+    .carousel-control-prev span {
+        margin-right: 25px !important;
+    }
+
+    .carousel-control-prev:hover, .carousel-control-next:hover {
+        color: #FEA116;
+    }
+
+    .carousel-control-prev:hover span, .carousel-control-next:hover span{
+        scale: 1.1;
+    }
+
 /*------------------------------------------------------------------
-    Page
+    Recepies
 -------------------------------------------------------------------*/
+#myTab .nav-link.active {
+    background-color: #222634 !important;
+}
+
+.inner-menu-box .nav-pills .nav-link:hover {
+    background-color: #222634 !important;
+    color: #FEA116 !important;
+}
+
 /*------------------------------------------------------------------
     Error
 -------------------------------------------------------------------*/
@@ -1971,3 +2026,8 @@ main > .error .btn-primary, .btn-secondary {
         background-color: #222634 !important;
         color: #FEA116 !important;
     }
+
+
+.all-page-title h1 {
+    color: #FEA116 !important;
+}
