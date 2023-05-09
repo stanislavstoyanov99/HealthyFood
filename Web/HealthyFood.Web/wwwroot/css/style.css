@@ -1763,7 +1763,7 @@ main > .acount-manage > .container.mt-80.mb-3 {
     margin: 6rem 0 !important;
 }
 
-.container.mt-80.mb-3 h2, h4 {
+.container.mt-80.mb-3 h4 {
     color: white !important;
 }
 
@@ -2095,13 +2095,32 @@ main > .acount-manage > .container.mt-80.mb-3 {
         border-color: #222634 !important;
     }
 
-.recent-box-blog .container.mt-80.mb-3 h2, h4 {
+.right-side-blog .recent-box-blog .container.mt-80.mb-3 h4 {
     color: #222634 !important;
 }
 
-.recent-box-blog a:hover h4 {
+.right-side-blog .recent-box-blog a:hover h4 {
     color: #FEA116 !important;
 }
+
+/*------------------------------------------------------------------
+    FAQ
+-------------------------------------------------------------------*/
+.faq-box h4{
+    font-weight: bold;
+}
+
+#accordion h5 {
+    padding: 0;
+}
+
+#accordion a {
+    color: #222634;
+}
+
+    #accordion a:hover {
+        color: #FEA116;
+    }
 
 /*------------------------------------------------------------------
     Error

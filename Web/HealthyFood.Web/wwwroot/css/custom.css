@@ -245,6 +245,10 @@
     height: 209px;
 }
 
+.recipe-card h4 {
+    color: white !important;
+}
+
     .recipe-card img {
         width: 300px;
         height: 209px;
@@ -254,6 +258,24 @@
     position: absolute;
     margin-top: 30px;
     left: 40%;
+}
+
+@media (max-width: 1000px) {
+    #PaginationNav {
+        left: 36%;
+    }
+}
+
+@media (max-width: 990px) {
+    #PaginationNav {
+        left: 65%;
+    }
+}
+
+@media (max-width: 767px) {
+    #PaginationNav {
+        left: 12%;
+    }
 }
 
 @media screen and (min-width: 1280px) {
@@ -307,7 +329,7 @@
 }
 
     .gallery-bg h2 {
-        color: white;
+        color: #222634;
     }
 
 #recipeHeading {
