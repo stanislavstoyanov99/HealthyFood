@@ -1,3 +1,5 @@
+using OpenAI_API;
+
 namespace HealthyFood.Web
 {
     using System.Net;
@@ -80,6 +82,8 @@ namespace HealthyFood.Web
             services.AddTransient<IApplicationUsersService, ApplicationUsersService>();
             services.AddTransient<IPrivacyService, PrivacyService>();
             services.AddTransient<IReviewsService, ReviewsService>();
+
+            services.AddTransient(_ => new OpenAIAPI(new APIAuthentication("YOUR_API_KEY", "org-yourOrgHere")));
 
             // External login providers
             services.AddAuthentication()

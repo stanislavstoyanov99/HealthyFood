@@ -41,6 +41,7 @@
     <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.175" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.5" />
+    <PackageReference Include="OpenAI" Version="1.7.2" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.435" PrivateAssets="all">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
@@ -54,5 +55,11 @@
     <ProjectReference Include="..\..\Services\HealthyFood.Services.Data\HealthyFood.Services.Data.csproj" />
     <ProjectReference Include="..\..\Services\HealthyFood.Services.Mapping\HealthyFood.Services.Mapping.csproj" />
     <ProjectReference Include="..\..\Services\HealthyFood.Services.Messaging\HealthyFood.Services.Messaging.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="OpenAI_API">
+      <HintPath>..\..\DLL\OpenAI_API.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>
