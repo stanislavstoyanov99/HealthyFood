@@ -1642,10 +1642,10 @@ blockquote {
 /*------------------------------------------------------------------
     Alerts
 -------------------------------------------------------------------*/
-.alert-info {
-    background-color: #222634;
-    color: white;
-    margin-top: 3rem;
+#cookieConsent.alert-info {
+    background-color: #222634 !important;
+    color: white !important;
+    margin-top: 3rem !important;
 }
 
 .alert-info a {
