@@ -1642,15 +1642,44 @@ blockquote {
 /*------------------------------------------------------------------
     Alerts
 -------------------------------------------------------------------*/
+#cookieConsent {
+    display:flex;
+}
+
+@media only screen and (max-width: 800px) {
+    #cookieConsent > button {
+        display: block;
+        margin-top: 1rem;
+    }
+}
+
+@media only screen and (max-width: 455px) {
+    #cookieConsent > button {
+        display: block;
+        margin-top: 2rem;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    #cookieConsent > button {
+        display: block;
+        margin-top: 3.5rem;
+    }
+}
+
 #cookieConsent.alert-info {
     background-color: #222634 !important;
     color: white !important;
     margin-top: 3rem !important;
 }
 
-.alert-info a {
-    color: white;
+#cookieConsent > span {
+    margin-right: 2rem;
 }
+
+    .alert-info a {
+        color: white;
+    }
 
     .alert-info a:hover {
         color: #FEA116;
