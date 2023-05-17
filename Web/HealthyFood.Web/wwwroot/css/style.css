@@ -2113,12 +2113,12 @@ main > .acount-manage > .container.mt-80.mb-3 {
     margin-top: 1.5rem;
 }
 
-.comment-respond-box button {
+.comment-respond-box a {
     background-color: #222634 !important;
     color: white !important;
 }
 
-    .comment-respond-box button:hover {
+    .comment-respond-box a:hover {
         background-color: #222634 !important;
         color: #FEA116 !important;
         border-color: #222634 !important;
