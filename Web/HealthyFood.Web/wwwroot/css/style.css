@@ -2132,10 +2132,31 @@ main > .acount-manage > .container.mt-80.mb-3 {
     color: #FEA116 !important;
 }
 
+#search-results .search-item {
+    border: 3px solid #FEA116;
+    border-radius: 0.5rem;
+    padding: 1rem 1rem 0 1rem;
+    margin-bottom: 1rem;
+}
+
+#search-results a:hover {
+    color: #FEA116;
+    border: none;
+}
+
+.small-search-wrap .form-group {
+    display: flex;
+}
+
+    .small-search-wrap .form-group i:hover {
+        color: #FEA116;
+        transform: scale(1.1);
+    }
+
 /*------------------------------------------------------------------
     FAQ
 -------------------------------------------------------------------*/
-.faq-box h4{
+.faq-box h4 {
     font-weight: bold;
 }
 
