@@ -1748,10 +1748,6 @@ primary:not(:disabled):not(.disabled):active:focus {
         border: 2px solid #FEA116 !important;
     }
 
-.text-danger {
-    color: #FEA116 !important;
-}
-
 /*------------------------------------------------------------------
     Login Form
 -------------------------------------------------------------------*/
@@ -1836,13 +1832,21 @@ main > .acount-manage > .container.mt-80.mb-3 {
     font-weight: bold;
 }
 
+.acount-manage h2 {
+    color: white;
+}
+
+.acount-manage hr {
+    background-color: white;
+}
+
 /*------------------------------------------------------------------
     Admin Panel > Dashboard
 -------------------------------------------------------------------*/
-#DashboardCon .row .col-md-3 {
-    border-bottom: 3px solid white;
-    border-color: #FEA116 !important;
-}
+    #DashboardCon .row .col-md-3 {
+        border-bottom: 3px solid white;
+        border-color: #FEA116 !important;
+    }
 
 #DashboardCon .row .col-md-3 a {
     display: block;
@@ -2151,6 +2155,17 @@ main > .acount-manage > .container.mt-80.mb-3 {
     .small-search-wrap .form-group i:hover {
         color: #FEA116;
         transform: scale(1.1);
+    }
+
+#AddCommentForm button {
+    background-color: #222634 !important;
+    color: white !important;
+}
+
+    #AddCommentForm button:hover {
+        background-color: #222634 !important;
+        color: #FEA116 !important;
+        border-color: #222634 !important;
     }
 
 /*------------------------------------------------------------------
