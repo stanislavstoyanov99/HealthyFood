@@ -1,13 +1,17 @@
 ﻿@model HealthyFood.Models.InputModels.PublicInputModels.ChatInputModel
 
+@{
+    ViewData["Title"] = "Chat";
+}
+
 <h4>ChatGPT</h4>
 <hr />
 <div class="chat-gpt"></div>
 
-<form asp-area="" asp-controller="ChatApi" asp-action="GetResponse" enctype="multipart/form-data" method="get">
+<form asp-area="" asp-controller="ChatApi" asp-action="GetResponse" enctype="multipart/form-data" method="get" class="chat-form">
     <div class="form-group">
         <label asp-for="Query"></label>
-        <textarea asp-for="Query" class="form-control"></textarea>
+        <textarea asp-for="Query" class="form-control chat-query"></textarea>
         <span asp-validation-for="Query" class="text-danger"></span>
     </div>
     <button type="submit" class="btn btn-success chat-submit">Submit</button>
@@ -24,31 +28,35 @@
                 $(".chat-awaiting").removeClass("d-none");
 
                 var button = $(this);
-                var form = button.parents().find("form");
+                const form = $(".chat-form");
+                var queryTextArea = $(".chat-query");
                 var queryText = $("#@Html.IdFor(x => x.Query)").val();
 
                 button.attr("disabled", "");
+                queryTextArea.attr("readonly", "");
 
                 $.ajax({
                     url: "@Url.Action("GetResponse", "ChatApi")",
                     method: "GET",
                     data: form.serialize()
                 }).done(function(html) {
-                    var query = $("<p/>")
+                    const query = $("<div/>")
                         .addClass("query")
-                        .text(queryText);
+                        .html(`<strong>You</strong><br/>${queryText}`);
 
-                    var response = $("<p/>")
+                    const response = $("<div/>")
                         .addClass("response")
-                        .text(html);
+                        .html(`<strong>ChatGPT</strong><br/>${html}`);
 
                     $(".chat-gpt").append(query);
                     $(".chat-gpt").append(response);
+                    queryTextArea.val("");
                 }).fail(function(data) {
                     console.log(data);
                 }).always(function () {
                     $(".chat-awaiting").addClass("d-none");
                     button.removeAttr("disabled");
+                    queryTextArea.removeAttr("readonly");
                 });
             });
         });
