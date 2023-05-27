@@ -1,38 +1,12 @@
-﻿namespace HealthyFood.Web.Controllers
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace HealthyFood.Web.Controllers
 {
-    using System.Threading.Tasks;
-
-    using Microsoft.AspNetCore.Mvc;
-    using OpenAI_API;
-
-    [ApiController]
-    [Route("api/[controller]")]
-    public class ChatController : ControllerBase
+    public class ChatController : Controller
     {
-        private readonly OpenAIAPI openAiApi;
-
-        public ChatController(OpenAIAPI openAiApi)
+        public IActionResult Index()
         {
-            this.openAiApi = openAiApi;
-        }
-
-        [HttpPost("[action]")]
-        public async Task<IActionResult> GetResponse(string query, string username)
-        {
-            var chat = this.openAiApi.Chat.CreateConversation();
-
-            if (!string.IsNullOrWhiteSpace(username))
-            {
-                chat.AppendUserInputWithName(username, query);
-            }
-            else
-            {
-                chat.AppendUserInput(query);
-            }
-
-            var response = await chat.GetResponseFromChatbotAsync();
-
-            return this.CreatedAtAction(nameof(this.GetResponse), response);
+            return View();
         }
     }
 }

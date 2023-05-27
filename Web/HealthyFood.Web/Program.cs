@@ -49,7 +49,7 @@ namespace HealthyFood.Web
             services.Configure<CookiePolicyOptions>(
                 options =>
                 {
-                    options.CheckConsentNeeded = context => true;
+                    options.CheckConsentNeeded = _ => true;
                     options.MinimumSameSitePolicy = SameSiteMode.None;
                 });
 
@@ -83,7 +83,7 @@ namespace HealthyFood.Web
             services.AddTransient<IPrivacyService, PrivacyService>();
             services.AddTransient<IReviewsService, ReviewsService>();
 
-            services.AddTransient(_ => new OpenAIAPI(new APIAuthentication("YOUR_API_KEY", "org-yourOrgHere")));
+            services.AddTransient(_ => new OpenAIAPI(new APIAuthentication(configuration["OpenAISettings:ApiKey"])));
 
             // External login providers
             services.AddAuthentication()

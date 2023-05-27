@@ -1,0 +1,56 @@
+﻿@model HealthyFood.Models.InputModels.PublicInputModels.ChatInputModel
+
+<h4>ChatGPT</h4>
+<hr />
+<div class="chat-gpt"></div>
+
+<form asp-area="" asp-controller="ChatApi" asp-action="GetResponse" enctype="multipart/form-data" method="get">
+    <div class="form-group">
+        <label asp-for="Query"></label>
+        <textarea asp-for="Query" class="form-control"></textarea>
+        <span asp-validation-for="Query" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success chat-submit">Submit</button>
+    <span class="chat-awaiting d-none">Awaiting ChatGPT response...</span>
+</form>
+
+@section Scripts
+{
+    <script>
+        $(function() {
+            $(".chat-submit").on("click", function(e) {
+                e.preventDefault();
+
+                $(".chat-awaiting").removeClass("d-none");
+
+                var button = $(this);
+                var form = button.parents().find("form");
+                var queryText = $("#@Html.IdFor(x => x.Query)").val();
+
+                button.attr("disabled", "");
+
+                $.ajax({
+                    url: "@Url.Action("GetResponse", "ChatApi")",
+                    method: "GET",
+                    data: form.serialize()
+                }).done(function(html) {
+                    var query = $("<p/>")
+                        .addClass("query")
+                        .text(queryText);
+
+                    var response = $("<p/>")
+                        .addClass("response")
+                        .text(html);
+
+                    $(".chat-gpt").append(query);
+                    $(".chat-gpt").append(response);
+                }).fail(function(data) {
+                    console.log(data);
+                }).always(function () {
+                    $(".chat-awaiting").addClass("d-none");
+                    button.removeAttr("disabled");
+                });
+            });
+        });
+    </script>
+}
