@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace HealthyFood.Web.Controllers
+﻿namespace HealthyFood.Web.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+
     public class ChatController : Controller
     {
         public IActionResult Index()
