@@ -17,11 +17,11 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetResponse([FromQuery] string query)
+        public async Task<IActionResult> GetResponse([FromQuery] string Query)
         {
             var chat = this.openAiApi.Chat.CreateConversation();
 
-            chat.AppendUserInput(query);
+            chat.AppendUserInput(Query);
 
             var response = await chat.GetResponseFromChatbotAsync();
 
