@@ -2205,14 +2205,3 @@ main > .error .btn-primary, .btn-secondary {
 .all-page-title h1 {
     color: #FEA116 !important;
 }
-
-.chat-form {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 50px;
-    padding-right: 50px;
-}
-
-.chat-submit {
-    margin-bottom: 20px;
-}

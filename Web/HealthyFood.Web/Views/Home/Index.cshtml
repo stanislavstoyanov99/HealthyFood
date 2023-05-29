@@ -233,10 +233,49 @@
             </div>
         </div>
     </div>
-
-    <partial name="_ContactsInfoPartial" />
 </div>
 <!-- End Gallery -->
+
+<div id="bmr-calculator" class="wrapper">
+    <div class="calculator">
+        <div class="choose-gender">
+            <div class="segmented-control">
+                <input id="calc-gender-male" type="radio" name="gender" value="male"
+                       checked=""><label for="calc-gender-male">Male</label>
+            </div>
+            <div class="segmented-control">
+                <input id="calc-gender-female" type="radio" name="gender" value="female"><label for="calc-gender-female">Female</label>
+            </div>
+        </div>
+        <label for="calc-age" id="calc-age_value">Age: 25</label>
+        <input id="calc-age" type="range" value="25" min="13" max="100">
+        <label for="calc-height" id="calc-height_value">Height: 180cm</label>
+        <input id="calc-height" type="range" value="180" min="80" max="250">
+        <label for="calc-weight" id="calc-weight_value">Weight: 80kg</label>
+        <input id="calc-weight" type="range" value="80" min="40" max="200">
+        <label for="calc-walking" id="calc-walking_value">Walking: 2 hours per week</label>
+        <input id="calc-walking" type="range" value="2" min="0" max="50">
+        <label for="calc-cardio" id="calc-cardio_value">Cardio: 1 hour per week</label>
+        <input id="calc-cardio" type="range" value="1" min="0" max="50">
+    </div>
+    <div class="results">
+        <div id="calc-target-gain">
+            To Gain Weight:<br>
+            <span>2700 calories</span>
+        </div>
+        <div id="calc-target-maintain">
+            To Maintain:<br>
+            <span>2400 calories</span>
+        </div>
+        <div id="calc-target-lose">
+            To Lose Weight:<br>
+            <span>1900 calories</span>
+        </div>
+    </div>
+</div>
+
+<partial name="_ContactsInfoPartial"/>
+
 <!-- Start Back to Top button -->
 <a href="#" id="back-to-top" title="Back to top" style="display: none;">
     <i class="fas fa-angle-double-up" aria-hidden="true"></i>
@@ -258,14 +297,19 @@
         <div class="chat-container">
             <div class="container d-flex flex-column-reverse">
                 <div class="chat-input">
-                    <div id="message-holder" class="mt-3 d-flex justify-content-start">
-                        <input class="pl-3" id="messageInput" placeholder="Message..." />
-                        <input type="hidden" id="userUsername" value="@this.User.Identity.Name" />
-                        <span id="error-message" class="text-danger" style="display: none;"></span>
-                        <button id="sendButton" class="ml-4 btn btn-dark btn-lg">Send</button>
-                    </div>
+                    <form asp-area="" asp-controller="ChatApi" asp-action="GetResponse" enctype="multipart/form-data" method="get" class="chat-form">
+                        <div class="d-flex justify-content-start">
+                            <input asp-for="Query" class="pl-3" id="messageInput" placeholder="Message..." />
+                            <span asp-validation-for="Query" class="text-danger"></span>
+                            <button type="submit" class="ml-4 btn btn-dark btn-lg chat-submit">Send</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="chat-output d-flex flex-column-reverse">
+                    <span id="error-message" class="text-danger" style="display: none;"></span>
+                    <span class="chat-awaiting d-none">
+                        <i class="far fa-comment-dots"></i>&nbsp; Awaiting ChatGPT response...
+                    </span>
                     <div id="messagesList"></div>
                 </div>
             </div>
@@ -275,7 +319,7 @@
     {
         <div class="chat-blank CH-color">
             <strong>If you want to join the chat</strong>
-            <a class="btn btn-light" asp-area="Identity" asp-page="/Account/Login">Sign up</a>
+            <a class="btn btn-light" asp-area="Identity" asp-page="/Account/Login">Login</a>
         </div>
     }
 </div>
@@ -298,5 +342,58 @@
         }
     </script>
 
-    <script src="~/js/chat.js"></script>
+    <script>
+        $(window).on('scroll', function () {
+            if ($(this).scrollTop() > 100) {
+                if (document.getElementById("chat").style.display != "block") {
+                    $('#chat-btn').fadeIn();
+                }
+            } else {
+                $('#chat-btn').fadeOut();
+            }
+        });
+    </script>
+
+    <script>
+        $(function () {
+            $(".chat-submit").on("click", function (e) {
+                e.preventDefault();
+
+                $(".chat-awaiting").removeClass("d-none");
+
+                const button = $(this);
+                const form = $(".chat-form");
+                const messageInput = $("#messageInput");
+                const messageInputValue = messageInput.val();
+
+                button.attr("disabled", "");
+                messageInput.attr("readonly", "");
+
+                $.ajax({
+                    url: "@Url.Action("GetResponse", "ChatApi")",
+                    method: "GET",
+                    data: form.serialize()
+                }).done(function (html) {
+                    const query = $("<div/>")
+                        .addClass("query")
+                        .html(`<strong>@this.User.Identity.Name:</strong><br/>${messageInputValue}<br/>`);
+
+                    const response = $("<div/>")
+                        .addClass("response")
+                        .html(`<strong>ChatGPT:</strong><br/>${html}`);
+
+                    $("#messagesList").append(query);
+                    $("#messagesList").append(response);
+                    messageInput.val("");
+                }).fail(function (data) {
+                    console.log(data);
+                    $("#error-message").text(data);
+                }).always(function () {
+                    $(".chat-awaiting").addClass("d-none");
+                    button.removeAttr("disabled");
+                    messageInput.removeAttr("readonly");
+                });
+            });
+        });
+    </script>
 }

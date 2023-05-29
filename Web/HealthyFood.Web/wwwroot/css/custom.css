@@ -628,7 +628,7 @@
     }
 
     #messagesList {
-        font-size: 18px;
+        padding-bottom: 20px;
     }
 
 .chat-output {

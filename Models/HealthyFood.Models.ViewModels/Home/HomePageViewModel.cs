@@ -1,7 +1,6 @@
 ﻿namespace HealthyFood.Models.ViewModels.Home
 {
     using System.Collections.Generic;
-
     using HealthyFood.Models.ViewModels.Articles;
     using HealthyFood.Models.ViewModels.Recipes;
 
@@ -12,5 +11,7 @@
         public IEnumerable<RecipeListingViewModel> TopRecipes { get; set; }
 
         public IEnumerable<List<GalleryViewModel>> SubGallery { get; set; }
+
+        public string Query { get; set; }
     }
 }
