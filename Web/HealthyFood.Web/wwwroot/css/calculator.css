@@ -1,5 +1,4 @@
 ﻿body {
-    padding: 0.5em 0.5em 2em 0.5em;
     margin: 0;
 }
 
@@ -33,6 +32,10 @@
     .results > div {
         margin-bottom: 0;
     }
+}
+
+.segmented-control label {
+    padding: 0.5rem 0 0 0 !important;
 }
 
 .choose-gender {
