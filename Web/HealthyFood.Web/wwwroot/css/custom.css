@@ -584,7 +584,7 @@
     position: fixed;
     bottom: 40px;
     right: 100px;
-    border: 2px solid #FEA116;
+    border: 3px solid #FEA116;
     z-index: 9;
 }
 
@@ -601,8 +601,7 @@
         }
 
 .chat-container {
-    max-width: 600px;
-    min-width: 400px;
+    width: 600px;
     height: 400px;
     overflow: hidden;
     padding: 10px;

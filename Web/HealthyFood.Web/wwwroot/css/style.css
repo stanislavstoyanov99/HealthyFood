@@ -2188,6 +2188,32 @@ main > .acount-manage > .container.mt-80.mb-3 {
     }
 
 /*------------------------------------------------------------------
+    Chat
+-------------------------------------------------------------------*/
+#messageInput {
+    padding: 0 1rem !important;
+}
+
+    #messageInput:focus-visible {
+        border: 2px solid #FEA116;
+        outline: none;
+        border-radius: 0.3rem;
+    }
+
+    .chat-input .d-flex {
+        display: flex !important;
+        justify-content: space-between !important;
+    }
+
+.chat-input input {
+    width: 100%;
+}
+
+.chat-input button:hover {
+    color: #FEA116;
+}
+
+/*------------------------------------------------------------------
     Error
 -------------------------------------------------------------------*/
 main > .error .btn-primary, .btn-secondary {
