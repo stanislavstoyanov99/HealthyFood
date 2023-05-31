@@ -1,0 +1,40 @@
+﻿<button type="button" onclick="openForm()" id="chat-btn" title="Chat" style="display: none;">
+    <i class="fas fa-comment" aria-hidden="true"></i>
+</button>
+<div class="chat-popup" id="chat">
+    @if (this.User.Identity.IsAuthenticated)
+    {
+        <div class="chat-head d-flex justify-content-between">
+            <strong class="pt-4">Healthy Food Chat</strong>
+            <button class="btn close-btn" onclick="closeForm()" aria-label="Close" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="chat-container">
+            <div class="container d-flex flex-column-reverse">
+                <div class="chat-input">
+                    <form asp-area="" asp-controller="ChatApi" asp-action="GetResponse" enctype="multipart/form-data" method="get" class="chat-form">
+                        <div class="d-flex justify-content-start">
+                            <input name="Query" class="pl-3" id="messageInput" placeholder="Message..." />
+                            <button type="submit" class="ml-4 btn btn-dark btn-lg chat-submit">Send</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="chat-output d-flex flex-column-reverse">
+                    <span id="error-message" class="text-danger" style="display: none;"></span>
+                    <span class="chat-awaiting d-none">
+                        <i class="far fa-comment-dots"></i>&nbsp; Awaiting ChatGPT response...
+                    </span>
+                    <div id="messagesList"></div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="chat-blank CH-color">
+            <strong>If you want to join the chat</strong>
+            <a class="btn btn-light" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </div>
+    }
+</div>

@@ -88,23 +88,23 @@ input[type="range"]::-webkit-slider-runnable-track {
     width: 100%;
     height: 6px;
     cursor: pointer;
-    background: #ededef;
+    background: #222634;
 }
 
 input[type="range"]::-webkit-slider-thumb {
-    box-shadow: 0 0 8px 1px #d8415c, 0 0 16px 4px var(--background-color);
+    box-shadow: 0 0 8px 1px #FEA116, 0 0 16px 4px #FEA116;
     border: 3px solid #fff;
     height: 24px;
     width: 24px;
     border-radius: 50%;
-    background: #d8415c;
+    background: #FEA116;
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -8px;
 }
 
 input[type="range"]:focus::-webkit-slider-runnable-track {
-    background: #d8415c;
+    background: #FEA116;
 }
 
 input[type="radio"] {
@@ -122,7 +122,7 @@ input[type="radio"] {
 }
 
 .segmented-control input[type="radio"]:checked + label {
-    background-color: #ededef;
+    background-color: #FEA116;
     width: 100%;
     height: 100%;
     display: block;
@@ -130,7 +130,7 @@ input[type="radio"] {
 }
 
 .segmented-control input[type="radio"]:focus + label {
-    border: 1px solid #d8415c;
+    border: 1px solid #FEA116;
 }
 
 .segmented-control:first-child input[type="radio"]:checked + label {
@@ -149,12 +149,12 @@ input[type="range"]::-moz-range-track {
 }
 
 input[type="range"]::-moz-range-thumb {
-    box-shadow: 0 0 8px 1px #d8415c, 0 0 16px 4px var(--background-color);
+    box-shadow: 0 0 8px 1px #FEA116, 0 0 16px 4px #FEA116;
     border: 3px solid #fff;
     height: 24px;
     width: 24px;
     border-radius: 50%;
-    background: #d8415c;
+    background: #FEA116;
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -8px;

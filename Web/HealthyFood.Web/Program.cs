@@ -1,8 +1,5 @@
-using OpenAI_API;
-
 namespace HealthyFood.Web
 {
-    using System.Net;
     using System.Reflection;
 
     using CloudinaryDotNet;
@@ -25,6 +22,7 @@ namespace HealthyFood.Web
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using OpenAI_API;
 
     public class Program
     {

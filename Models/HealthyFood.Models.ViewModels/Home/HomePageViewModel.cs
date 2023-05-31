@@ -11,7 +11,5 @@
         public IEnumerable<RecipeListingViewModel> TopRecipes { get; set; }
 
         public IEnumerable<List<GalleryViewModel>> SubGallery { get; set; }
-
-        public string Query { get; set; }
     }
 }

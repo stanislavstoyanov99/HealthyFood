@@ -74,6 +74,12 @@
     </div>
 </div>
 
+<a href="#" id="back-to-top" title="Back to top" style="display: none;">
+    <i class="fas fa-angle-double-up" aria-hidden="true"></i>
+</a>
+
+<partial name="_ChatPartial" />
+
 <!-- End Contact -->
 @section Scripts
 {
@@ -96,6 +102,50 @@
         grecaptcha.ready(function () {
             grecaptcha.execute('@this.Configuration["GoogleReCaptcha:Key"]', { action: 'contact_form' }).then(function (token) {
                 document.getElementById("RecaptchaValue").value = token;
+            });
+        });
+    </script>
+    <script src="~/js/show-chat.js" asp-append-version="true"></script>
+
+    <script>
+        $(function () {
+            $(".chat-submit").on("click", function (e) {
+                e.preventDefault();
+
+                $(".chat-awaiting").removeClass("d-none");
+
+                const button = $(this);
+                const form = $(".chat-form");
+                const messageInput = $("#messageInput");
+                const messageInputValue = messageInput.val();
+
+                button.attr("disabled", "");
+                messageInput.attr("readonly", "");
+
+                $.ajax({
+                    url: "@Url.Action("GetResponse", "ChatApi")",
+                    method: "GET",
+                    data: form.serialize()
+                }).done(function (html) {
+                    const query = $("<div/>")
+                        .addClass("query")
+                        .html(`<strong>@this.User.Identity.Name:</strong><br/>${messageInputValue}<br/>`);
+
+                    const response = $("<div/>")
+                        .addClass("response")
+                        .html(`<strong>ChatGPT:</strong><br/>${html}`);
+
+                    $("#messagesList").append(query);
+                    $("#messagesList").append(response);
+                    messageInput.val("");
+                }).fail(function (data) {
+                    console.log(data);
+                    $("#error-message").text(data);
+                }).always(function () {
+                    $(".chat-awaiting").addClass("d-none");
+                    button.removeAttr("disabled");
+                    messageInput.removeAttr("readonly");
+                });
             });
         });
     </script>

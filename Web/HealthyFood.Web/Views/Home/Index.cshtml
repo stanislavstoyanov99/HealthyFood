@@ -238,13 +238,17 @@
 
 <div id="bmr-calculator" class="wrapper">
     <div class="calculator">
+        <div class="heading-title text-center">
+            <h2>Calorie Calculator</h2>
+        </div>
         <div class="choose-gender">
             <div class="segmented-control">
-                <input id="calc-gender-male" type="radio" name="gender" value="male"
-                       checked=""><label for="calc-gender-male">Male</label>
+                <input id="calc-gender-male" type="radio" name="gender" value="male" checked=""/>
+                <label for="calc-gender-male">Male</label>
             </div>
             <div class="segmented-control">
-                <input id="calc-gender-female" type="radio" name="gender" value="female"><label for="calc-gender-female">Female</label>
+                <input id="calc-gender-female" type="radio" name="gender" value="female"/>
+                <label for="calc-gender-female">Female</label>
             </div>
         </div>
         <label for="calc-age" id="calc-age_value">Age: 25</label>
@@ -281,78 +285,17 @@
     <i class="fas fa-angle-double-up" aria-hidden="true"></i>
 </a>
 <!-- End Back to Top button -->
-<!-- Start Chat -->
-<button type="button" onclick="openForm()" id="chat-btn" title="Chat" style="display: none;">
-    <i class="fas fa-comment" aria-hidden="true"></i>
-</button>
-<div class="chat-popup" id="chat">
-    @if (this.User.Identity.IsAuthenticated)
-    {
-        <div class="chat-head d-flex justify-content-between">
-            <strong class="pt-4">Healthy Food Chat</strong>
-            <button class="btn close-btn" onclick="closeForm()" aria-label="Close" type="button">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="chat-container">
-            <div class="container d-flex flex-column-reverse">
-                <div class="chat-input">
-                    <form asp-area="" asp-controller="ChatApi" asp-action="GetResponse" enctype="multipart/form-data" method="get" class="chat-form">
-                        <div class="d-flex justify-content-start">
-                            <input asp-for="Query" class="pl-3" id="messageInput" placeholder="Message..." />
-                            <span asp-validation-for="Query" class="text-danger"></span>
-                            <button type="submit" class="ml-4 btn btn-dark btn-lg chat-submit">Send</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="chat-output d-flex flex-column-reverse">
-                    <span id="error-message" class="text-danger" style="display: none;"></span>
-                    <span class="chat-awaiting d-none">
-                        <i class="far fa-comment-dots"></i>&nbsp; Awaiting ChatGPT response...
-                    </span>
-                    <div id="messagesList"></div>
-                </div>
-            </div>
-        </div>
-    }
-    else
-    {
-        <div class="chat-blank CH-color">
-            <strong>If you want to join the chat</strong>
-            <a class="btn btn-light" asp-area="Identity" asp-page="/Account/Login">Login</a>
-        </div>
-    }
-</div>
-<!-- End Chat -->
+
+<partial name="_ChatPartial"/>
 
 @section Scripts {
     <script>
         $(document).ready(function () {
             $('#GalleryCarusel').carousel({ interval: 3000 });
         });
-
-        function openForm() {
-            document.getElementById("chat").style.display = "block";
-            document.getElementById("chat-btn").style.display = "none";
-        }
-
-        function closeForm() {
-            document.getElementById("chat").style.display = "none";
-            document.getElementById("chat-btn").style.display = "block";
-        }
     </script>
 
-    <script>
-        $(window).on('scroll', function () {
-            if ($(this).scrollTop() > 100) {
-                if (document.getElementById("chat").style.display != "block") {
-                    $('#chat-btn').fadeIn();
-                }
-            } else {
-                $('#chat-btn').fadeOut();
-            }
-        });
-    </script>
+    <script src="~/js/show-chat.js" asp-append-version="true"></script>
 
     <script>
         $(function () {
@@ -396,4 +339,6 @@
             });
         });
     </script>
+
+    <script src="~/js/calculator.js" asp-append-version="true"></script>
 }
