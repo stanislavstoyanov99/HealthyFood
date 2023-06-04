@@ -99,57 +99,57 @@ Contributions are welcome! Please create a pull request and we'll review it as s
 ## ⭐**Screenshots**
 
 ### Home page
-![Home page 1](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/home-page-1.jpg)
-![Home page 2](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/home-page-2.jpg)
-![Home page 3](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/home-page-3.jpg)
-![Home page 4](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/home-page-4.jpg)
-![Home page 5](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/home-page-5.jpg)
-![Home page 6](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/home-page-6.jpg)
+![Home page 1](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/home-page-1.jpg)
+![Home page 2](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/home-page-2.jpg)
+![Home page 3](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/home-page-3.jpg)
+![Home page 4](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/home-page-4.jpg)
+![Home page 5](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/home-page-5.jpg)
+![Home page 6](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/home-page-6.jpg)
 
 ### Login/Register Dialogs
-![Login Register Dialog 1](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/login-page-1.jpg)
-![Login Register Dialog 2](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/register-page-1.jpg)
+![Login Register Dialog 1](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/login-page-1.jpg)
+![Login Register Dialog 2](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/register-page-1.jpg)
 
 ### Footer
-![Footer](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/home-page-7.jpg)
+![Footer](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/home-page-7.jpg)
 
 ### FAQ page
-![FAQ page](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/faq-page-1.jpg)
+![FAQ page](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/faq-page-1.jpg)
 
 ### Privacy page
-![Privacy page](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/privacy-page-1.jpg)
+![Privacy page](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/privacy-page-1.jpg)
 
 ### Contacts page
-![Contacts page](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/contacts-page-1.jpg)
+![Contacts page](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/contacts-page-1.jpg)
 
 ### Admin Dashboard
-![Admin Dashboard 1](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/admin-dashboard-1.jpg)
-![Admin Dashboard 2](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/admin-dashboard-2.jpg)
-![Admin Dashboard 3](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/admin-dashboard-3.jpg)
+![Admin Dashboard 1](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/admin-dashboard-1.jpg)
+![Admin Dashboard 2](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/admin-dashboard-2.jpg)
+![Admin Dashboard 3](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/admin-dashboard-3.jpg)
 
 ### Recipes pages
-![Recipe pages 1](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/create-recipe-review.jpg)
-![Recipe pages 2](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/edit-own-recipe.jpg)
-![Recipe pages 3](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/recipes-page-1jpg)
-![Recipe pages 4](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/recipes-details-page-1.jpg)
-![Recipe pages 5](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/recipes-details-page-2.jpg)
-![Recipe pages 6](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/already-created-review.jpg)
-![Recipe pages 7](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/submit-recipe-page.jpg)
-![Recipe pages 8](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/view-own-recipes.jpg)
+![Recipe pages 1](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/create-recipe-review.jpg)
+![Recipe pages 2](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/edit-own-recipe.jpg)
+![Recipe pages 3](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/recipes-page-1jpg)
+![Recipe pages 4](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/recipes-details-page-1.jpg)
+![Recipe pages 5](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/recipes-details-page-2.jpg)
+![Recipe pages 6](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/already-created-review.jpg)
+![Recipe pages 7](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/submit-recipe-page.jpg)
+![Recipe pages 8](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/view-own-recipes.jpg)
 
 ### Articles pages
-![Articles pages 1](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/articles-page-1.jpg)
-![Articles pages 2](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/articles-details-page-1.jpg)
-![Articles pages 3](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/articles-details-page-2.jpg)
-![Articles pages 4](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/articles-comments.jpg)
-![Articles pages 5](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/articles-search-page.jpg)
+![Articles pages 1](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/articles-page-1.jpg)
+![Articles pages 2](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/articles-details-page-1.jpg)
+![Articles pages 3](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/articles-details-page-2.jpg)
+![Articles pages 4](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/articles-comments.jpg)
+![Articles pages 5](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/articles-search-page.jpg)
 
 ### Chat
-![Chat 1](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/chat-1.jpg)
-![Chat 2](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/chat-2.jpg)
+![Chat 1](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/chat-1.jpg)
+![Chat 2](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/chat-2.jpg)
 
 ### Manage profile
-![Manage profile](https://github.com/stanislavstoyanov99/HealthyFood/blob/master/Screenshots/manage-profile.jpg)
+![Manage profile](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/manage-profile.jpg)
 
 
 ## **✌️ Show your opinion**
