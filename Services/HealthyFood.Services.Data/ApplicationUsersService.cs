@@ -23,33 +23,33 @@
 
         public async Task BanByIdAsync(string id)
         {
-            var cookingHubUser = await this.applicationUsersRepository
+            var healthyFoodUser = await this.applicationUsersRepository
                 .All()
                 .FirstOrDefaultAsync(u => u.Id == id);
 
-            if (cookingHubUser == null)
+            if (healthyFoodUser == null)
             {
                 throw new NullReferenceException(
                     string.Format(ExceptionMessages.ApplicationUserNotFound, id));
             }
 
-            this.applicationUsersRepository.Delete(cookingHubUser);
+            this.applicationUsersRepository.Delete(healthyFoodUser);
             await this.applicationUsersRepository.SaveChangesAsync();
         }
 
         public async Task UnbanByIdAsync(string id)
         {
-            var cookingHubUser = await this.applicationUsersRepository
+            var healthyFoodUser = await this.applicationUsersRepository
                 .AllWithDeleted()
                 .FirstOrDefaultAsync(u => u.Id == id);
 
-            if (cookingHubUser == null)
+            if (healthyFoodUser == null)
             {
                 throw new NullReferenceException(
                     string.Format(ExceptionMessages.ApplicationUserNotFound, id));
             }
 
-            this.applicationUsersRepository.Undelete(cookingHubUser);
+            this.applicationUsersRepository.Undelete(healthyFoodUser);
             await this.applicationUsersRepository.SaveChangesAsync();
         }
 
@@ -65,18 +65,18 @@
 
         public async Task<TViewModel> GetViewModelByIdAsync<TViewModel>(string id)
         {
-            var cookingHubUserViewModel = await this.applicationUsersRepository
+            var healthyFoodUserViewModel = await this.applicationUsersRepository
                 .AllWithDeleted()
                 .Where(u => u.Id == id)
                 .To<TViewModel>()
                 .FirstOrDefaultAsync();
 
-            if (cookingHubUserViewModel == null)
+            if (healthyFoodUserViewModel == null)
             {
                 throw new NullReferenceException(string.Format(ExceptionMessages.ApplicationUserNotFound, id));
             }
 
-            return cookingHubUserViewModel;
+            return healthyFoodUserViewModel;
         }
     }
 }
