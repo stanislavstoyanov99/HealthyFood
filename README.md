@@ -130,7 +130,7 @@ Contributions are welcome! Please create a pull request and we'll review it as s
 ### Recipes pages
 ![Recipe pages 1](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/create-recipe-review.jpg)
 ![Recipe pages 2](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/edit-own-recipe.jpg)
-![Recipe pages 3](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/recipes-page-1jpg)
+![Recipe pages 3](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/recipes-page-1.jpg)
 ![Recipe pages 4](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/recipes-details-page-1.jpg)
 ![Recipe pages 5](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/recipes-details-page-2.jpg)
 ![Recipe pages 6](https://github.com/stanislavstoyanov99/HealthyFood/blob/main/Screenshots/already-created-review.jpg)
