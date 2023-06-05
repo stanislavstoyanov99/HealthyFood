@@ -68,19 +68,19 @@
     color: #060914;
 }
 
-input[type="range"] {
+#bmr-calculator .calculator input[type="range"] {
     -webkit-appearance: none;
     margin: 18px 0;
     width: 100%;
     transition: all 0.265ms ease-out;
 }
 
-input[type="range"]:not(:last-of-type) {
+#bmr-calculator .calculator input[type="range"]:not(:last-of-type) {
     margin-top: 0;
     margin-bottom: 2.5em;
 }
 
-input[type="range"]:focus {
+#bmr-calculator .calculator input[type="range"]:focus {
     outline: none;
 }
 
@@ -92,6 +92,14 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 input[type="range"]::-webkit-slider-thumb {
+    #bmr-calculator .calculator input[type="range"]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 6px;
+        cursor: pointer;
+        background: #222634;
+    }
+
+#bmr-calculator .calculator input[type="range"]::-webkit-slider-thumb {
     box-shadow: 0 0 8px 1px #FEA116, 0 0 16px 4px #FEA116;
     border: 3px solid #fff;
     height: 24px;
@@ -103,11 +111,11 @@ input[type="range"]::-webkit-slider-thumb {
     margin-top: -8px;
 }
 
-input[type="range"]:focus::-webkit-slider-runnable-track {
+#bmr-calculator .calculator input[type="range"]:focus::-webkit-slider-runnable-track {
     background: #FEA116;
 }
 
-input[type="radio"] {
+#bmr-calculator .calculator input[type="radio"] {
     -webkit-appearance: none;
     display: none;
 }
@@ -141,14 +149,14 @@ input[type="radio"] {
     border-radius: 0 0.5em 0.5em 0;
 }
 
-input[type="range"]::-moz-range-track {
+#bmr-calculator .calculator input[type="range"]::-moz-range-track {
     width: 100%;
     height: 100%;
     cursor: pointer;
     background: #ededef;
 }
 
-input[type="range"]::-moz-range-thumb {
+#bmr-calculator .calculator input[type="range"]::-moz-range-thumb {
     box-shadow: 0 0 8px 1px #FEA116, 0 0 16px 4px #FEA116;
     border: 3px solid #fff;
     height: 24px;
