@@ -84,14 +84,17 @@
     outline: none;
 }
 
-input[type="range"]::-webkit-slider-runnable-track {
+#bmr-calculator .calculator input[type="range"] {
     width: 100%;
     height: 6px;
     cursor: pointer;
-    background: #222634;
+    border: 3px solid #222634;
 }
 
-input[type="range"]::-webkit-slider-thumb {
+     #bmr-calculator .calculator input[type="range"]:focus {
+         border: 3px solid #FEA116;
+     }
+
     #bmr-calculator .calculator input[type="range"]::-webkit-slider-runnable-track {
         width: 100%;
         height: 6px;
