@@ -14,7 +14,7 @@ The main goal of the app is to provide users interested in culinary arts and org
 * **Rate and Review**: The community can rate and review the recipes, providing feedback and suggestions.
 * **Article Creation**: Users can also create articles related to culinary arts and healthy eating, and share them with the community.
 * **Search Functionality**: The app provides search functionality, allowing users to search for recipes and articles by title and tags.
-* **TDEE Calculator**: Users can use a Total Daily Energy Expenditure calculator to estimate how many calories they burn per day. Other useful metrics such as BMI are also supported.
+* **Calorie Calculator**: Users can use a calorie calculator to estimate how many calories they burn per day - Gain Weight, To Maintain, To Lose Weight values are supported.
 * **Built-in Chat**: The app provides a custom built-in chat system for communication with AI Bot-driven Q&A support.
 
 
