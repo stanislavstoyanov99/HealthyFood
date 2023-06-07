@@ -12,7 +12,7 @@
 
         public const string AdministratorFullName = "Stanislav";
 
-        public const string AdministratorEmail = "admin@gmail.com";
+        public const string AdministratorEmail = "stanislav.stoyanov369@gmail.com";
 
         public const string AdministratorPassword = "123456";
 
