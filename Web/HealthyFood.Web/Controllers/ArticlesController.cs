@@ -28,7 +28,6 @@
             this.categoriesService = categoriesService;
         }
 
-        [ServiceFilter(typeof(PasswordExpirationCheckAttribute))]
         public async Task<IActionResult> Index(int? pageNumber)
         {
             var allArticles = await Task.Run(() =>
@@ -40,7 +39,6 @@
             return this.View(model);
         }
 
-        [ServiceFilter(typeof(PasswordExpirationCheckAttribute))]
         public async Task<IActionResult> Details(int id)
         {
             var article = await this.articlesService
